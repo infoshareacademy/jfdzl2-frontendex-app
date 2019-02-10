@@ -1,12 +1,17 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import Paper from '@material-ui/core/Paper';
+
+import Search from '../../components/Search/Search';
 
 
-class Main  extends Component{
+class Main extends Component {
 
-    render(){
+    render() {
 
-        return(
-            <div>Main</div>
+        return (
+            <Paper>
+                <Search></Search>
+            </Paper>
         )
     }
 }
