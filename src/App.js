@@ -16,6 +16,7 @@ class App extends Component {
 
           <Route exact path="/" component={Main} />
           <Route path="/stats" component={Stats} />
+          <Route path="/mechanic-list" component={MechanicList} />
 
         </div>
       </Router>
