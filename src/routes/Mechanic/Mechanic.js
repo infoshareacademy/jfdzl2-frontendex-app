@@ -7,6 +7,9 @@ import Tab from '@material-ui/core/Tab';
 
 import Typography from '@material-ui/core/Typography';
 
+import '../Mechanic/Mechanic.css';
+
+
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -35,7 +38,7 @@ class Mechanic extends Component{
 		
 		return(
 			<React.Fragment>
-				<h1> Nazwa zakładu mechanicznego/Heading </h1> 
+				<h1 className="mechanic__header"> Nazwa zakładu mechanicznego/Heading </h1> 
 
 				<AppBar position="static">
           <Tabs value={value} onChange={this.handleChange}>
