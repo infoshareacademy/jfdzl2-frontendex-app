@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Dashboard from '../../components/Dashboard/Dashboard';
 
 
 class Stats  extends Component{
@@ -6,7 +7,7 @@ class Stats  extends Component{
     render(){
 
         return(
-            <div>Stats</div>
+            <div><Dashboard/></div>
         )
     }
 }
