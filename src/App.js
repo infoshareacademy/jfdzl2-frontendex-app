@@ -6,6 +6,7 @@ import Stats from './routes/Stats/Stats';
 import Mechanic from './routes/Mechanic/Mechanic';
 
 import ApplicationBar from './components/AppBar/AppBar';
+import MechanicList from './components/MechanicList/MechanicList';
 
 class App extends Component {
   render() {
@@ -18,6 +19,8 @@ class App extends Component {
           <Route exact path="/" component={Main} />
           <Route path="/stats" component={Stats} /> 
           <Route path="/mechanic" component={Mechanic} />
+          <Route path="/stats" component={Stats} />
+          <Route path="/mechanic-list" component={MechanicList} />
 
         </div>
       </Router>
