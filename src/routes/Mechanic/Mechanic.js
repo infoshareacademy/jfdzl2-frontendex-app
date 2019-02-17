@@ -1,14 +1,20 @@
 import React, {Component} from 'react';
 
 
-class Mechanic  extends Component{
+class Mechanic extends Component{ 
+	render(){ 
+		return(
+			<React.Fragment>
+				<h1> Nazwa zakładu mechanicznego/Heading </h1> 
 
-    render(){
+				<div> Usługi </div>
+				<div> Ocena</div>
+				<div> Adres</div>
 
-        return(
-            <div>Mechanic</div>
-        )
-    }
+				<div> Footer </div>
+			</React.Fragment>
+		)
+	}
 }
 
 export default Mechanic;
