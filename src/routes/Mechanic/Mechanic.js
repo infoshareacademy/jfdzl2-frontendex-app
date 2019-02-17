@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'; 
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import SwipeableViews from 'react-swipeable-views';
 
 import Typography from '@material-ui/core/Typography';
 
@@ -39,18 +40,28 @@ class Mechanic extends Component{
 		return(
 			<React.Fragment>
 				<h1 className="mechanic__header"> Nazwa zakładu mechanicznego/Heading </h1> 
+ 
+					<AppBar position="static">
+						<Tabs 
+						value={value} 
+						onChange={this.handleChange} 
+						centered
+						>
+							<Tab label="Usługi" />
+							<Tab label="Lokalizacja" />
+							<Tab label="Ocena" />
+						</Tabs>
+					</AppBar> 
 
-				<AppBar position="static">
-          <Tabs value={value} onChange={this.handleChange}>
-            <Tab label="Usługi" />
-            <Tab label="Lokalizacja" />
-            <Tab label="Ocena" />
-          </Tabs>
-        </AppBar>
-
-				{value === 0 && <TabContainer>Usługi</TabContainer>}
-        {value === 1 && <TabContainer>Lokalizacja</TabContainer>}
-        {value === 2 && <TabContainer>Adres</TabContainer>} 
+					<SwipeableViews  
+						index={this.state.value}
+						onChangeIndex={this.handleChangeIndex}
+					>
+						<TabContainer> Item One</TabContainer>
+          	<TabContainer> Item Two</TabContainer>
+          	<TabContainer> Item Three</TabContainer>
+						
+					</SwipeableViews>
 
 				<div> Footer </div>
 			</React.Fragment>
