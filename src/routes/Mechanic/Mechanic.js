@@ -57,9 +57,9 @@ class Mechanic extends Component{
 						index={this.state.value}
 						onChangeIndex={this.handleChangeIndex}
 					>
-						<TabContainer> Item One</TabContainer>
-          	<TabContainer> Item Two</TabContainer>
-          	<TabContainer> Item Three</TabContainer>
+						<TabContainer> Usługi </TabContainer>
+          	<TabContainer> Lokalizacja </TabContainer>
+          	<TabContainer> Ocena </TabContainer>
 						
 					</SwipeableViews>
 
