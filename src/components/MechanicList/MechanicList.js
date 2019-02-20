@@ -23,6 +23,8 @@ class MechanicList extends React.Component {
 
         return (
             <div>
+                <Table>
+                    <TableRow>
                 {mechanics && mechanics.map((mechanic) => {
                     return (
                         <div>
@@ -31,6 +33,8 @@ class MechanicList extends React.Component {
                             </div>
                     )
                 })}
+                </TableRow>
+                </Table>
             </div>
         )
     }
