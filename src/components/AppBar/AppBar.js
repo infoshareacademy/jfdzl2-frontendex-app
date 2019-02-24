@@ -43,25 +43,37 @@ class ApplicationBar extends React.Component {
                     </Toolbar>
                 </AppBar>
                 <Drawer open={this.state.open} onClose={this.toggleDrawer} >
-                    <List>
-                        <Link to="/"  onClick={this.toggleDrawer}>
-                            <ListItem button>
-                                <ListItemText> Home</ListItemText>
+                <List>
+							<Link to="/"  onClick={this.toggleDrawer}>
+								<ListItem button>
+									<ListItemText> Home</ListItemText> 
+								</ListItem>
+							</Link>
 
-                            </ListItem>
-                        </Link>
-                        <Link to="/stats" onClick={this.toggleDrawer}>
-                        <ListItem button>
-                            <ListItemText>Stats</ListItemText>
-                        </ListItem>
-                        </Link>
-                        <ListItem button >
-                            <ListItemText />
-                        </ListItem>
-                    </List>
+							<Link to="/stats" onClick={this.toggleDrawer}>
+								<ListItem button>
+										<ListItemText>Stats</ListItemText>
+								</ListItem>
+							</Link>
+
+							<Link to="/mechanic-list" onClick={this.toggleDrawer}>
+								<ListItem button>
+										<ListItemText>Mechanic List</ListItemText>
+								</ListItem>
+							</Link>
+
+							<Link to="/mechanic" onClick={this.toggleDrawer}>
+								<ListItem button>
+										<ListItemText>Mechanic</ListItemText>
+								</ListItem>
+							</Link>
+
+							<ListItem button >
+									<ListItemText />
+							</ListItem>
+						</List>
                 </Drawer>
             </React.Fragment>
-
 
         )
     }
