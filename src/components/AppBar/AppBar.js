@@ -8,13 +8,19 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Link } from "react-router-dom";
+import { withStyles } from "@material-ui/core/styles";
 
 
 import './AppBar.css'
 
-
+const styles = {
+    appBar: {
+      backgroundColor: 'rgba(157, 33, 179)',
+    },
+  };
 
 class ApplicationBar extends React.Component {
+
 
     state = {
         open: false
@@ -25,9 +31,10 @@ class ApplicationBar extends React.Component {
     }
 
     render() {
+        const { classes } = this.props;
         return (
             <React.Fragment>
-                <AppBar position="fixed">
+                <AppBar position="fixed" className={classes.appBar}>
                     <Toolbar>
                         <IconButton onClick={this.toggleDrawer} color="inherit" aria-label="Menu">
                             <MenuIcon />
@@ -60,4 +67,4 @@ class ApplicationBar extends React.Component {
     }
 }
 
-export default ApplicationBar;
+export default withStyles(styles)(ApplicationBar);

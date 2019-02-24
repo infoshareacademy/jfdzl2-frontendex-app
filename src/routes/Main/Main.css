@@ -1,42 +1,91 @@
+.container-flex {
+  display: flex;
+  justify-content: center;
+}
+
 .main-container {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    background-image: linear-gradient(to top, #9d21b3, #a53cb8, #ad52bd, #b465c2, #bb77c7, #c089cf, #c69bd7, #cdacde, #d6c1e9, #e1d6f1, #efebf9, #ffffff);
-    
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(
+      to top,
+      rgba(157, 33, 179, 0.68),
+      rgba(165, 60, 184, 0.68),
+      rgba(173, 82, 189, 0.68),
+      rgba(180, 101, 194, 0.68),
+      rgba(187, 119, 199, 0.68),
+      rgba(192, 137, 207, 0.68),
+      rgba(198, 155, 215, 0.68),
+      rgba(205, 172, 222, 0.68),
+      rgba(214, 193, 233, 0.68),
+      rgba(225, 214, 241, 0.68),
+      rgba(239, 235, 249, 0.68),
+      rgba(255, 255, 255, 0.68)
+    ),
+    url("/background.jpg");
+  background-size: cover;
 }
 
 .content {
-width: 80vh;
-height: 100%;
-display: flex;
-flex-direction: column;
-justify-content: center;
+  width: 80vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10%;
-    margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+  background-image: url("/logo.png");
+  background-size: cover;
+  width: 150px;
+  height: 150px;
 }
 
 .description-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    margin-bottom: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-
 .app-name {
-    font-size: 4em;
-    color: white;
-    margin: 0;
+  font-size: 2em;
+  color: white;
+  margin: 0;
 }
 
 h2 {
-    color: white;
+  color: white;
+  margin: 0;
+  font-size: 1.6em;
+  text-align: center;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  margin: 5%;
+  align-items: center;
+}
+
+@media (min-width: 350px) {
+  .app-name {
+    font-size: 4em;
+  }
+  h2 {
+    font-size: 2em;
+  }
+}
+
+@media (min-width: 600px) {
+  .buttons-container {
+    width: 300px;
+  }
+  .logo-container {
+    margin-top: 20%;
+  }
 }
