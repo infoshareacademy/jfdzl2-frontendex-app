@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import _ from 'lodash';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -7,6 +7,8 @@ import Tab from '@material-ui/core/Tab';
 import SwipeableViews from 'react-swipeable-views';
 
 import Typography from '@material-ui/core/Typography';
+
+import {mechanics} from '../../database/Database';
 
 import '../Mechanic/Mechanic.css';
 
@@ -30,12 +32,16 @@ class Mechanic extends Component {
 	state = {
 		value: 0,
 	};
+	
 
 	handleChange = (event, value) => {
 		this.setState({ value });
 	};
 
 	componentDidMount() {
+
+		const mechanic = _.find(mechanics, {id: 1});
+		console.log('mechanic', mechanic)
 
 		firebase.database.collection("brands").get().then(function (querySnapshot) {
 			querySnapshot.forEach(function (doc) {
