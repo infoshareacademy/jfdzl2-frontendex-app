@@ -25,38 +25,52 @@ class ApplicationBar extends React.Component {
     }
 
     render() {
-        return (
-            <React.Fragment>
-                <AppBar position="static">
-                    <Toolbar>
-                        <IconButton onClick={this.toggleDrawer} color="inherit" aria-label="Menu">
-                            <MenuIcon />
-                        </IconButton>
+			return (
+				<React.Fragment>
 
-                    </Toolbar>
-                </AppBar>
-                <Drawer open={this.state.open} onClose={this.toggleDrawer} >
-                    <List>
-                        <Link to="/"  onClick={this.toggleDrawer}>
-                            <ListItem button>
-                                <ListItemText> Home</ListItemText>
+					<AppBar position="static">
+							<Toolbar>
+								<IconButton onClick={this.toggleDrawer} color="inherit" aria-label="Menu">
+									<MenuIcon />
+								</IconButton> 
+							</Toolbar>
+					</AppBar>
 
-                            </ListItem>
-                        </Link>
-                        <Link to="/stats" onClick={this.toggleDrawer}>
-                        <ListItem button>
-                            <ListItemText>Stats</ListItemText>
-                        </ListItem>
-                        </Link>
-                        <ListItem button >
-                            <ListItemText />
-                        </ListItem>
-                    </List>
-                </Drawer>
-            </React.Fragment>
+					<Drawer open={this.state.open} onClose={this.toggleDrawer} >
+						<List>
+							<Link to="/"  onClick={this.toggleDrawer}>
+								<ListItem button>
+									<ListItemText> Home</ListItemText> 
+								</ListItem>
+							</Link>
+
+							<Link to="/stats" onClick={this.toggleDrawer}>
+								<ListItem button>
+										<ListItemText>Stats</ListItemText>
+								</ListItem>
+							</Link>
+
+							<Link to="/mechanic-list" onClick={this.toggleDrawer}>
+								<ListItem button>
+										<ListItemText>Mechanic List</ListItemText>
+								</ListItem>
+							</Link>
+
+							<Link to="/mechanic" onClick={this.toggleDrawer}>
+								<ListItem button>
+										<ListItemText>Mechanic</ListItemText>
+								</ListItem>
+							</Link>
+
+							<ListItem button >
+									<ListItemText />
+							</ListItem>
+						</List>
+					</Drawer>
+				</React.Fragment>
 
 
-        )
+			)
     }
 }
 
