@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 
 import '../Mechanic/Mechanic.css';
 
+import firebase from '../../database/firebase';
+
 
 function TabContainer(props) {
   return (
@@ -32,6 +34,18 @@ class Mechanic extends Component{
   handleChange = (event, value) => {
     this.setState({ value });
 	};
+
+	componentDidMount(){
+
+		firebase.database.collection("brands").get().then(function(querySnapshot) {
+			querySnapshot.forEach(function(doc) {
+					// doc.data() is never undefined for query doc snapshots
+					console.log(doc.id, " => ", doc.data());
+			});
+	});
+	
+
+	}
 	
 	render(){ 
 		const { classes } = this.props;
