@@ -5,6 +5,9 @@ import TableRow from '@material-ui/core/TableRow';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
+import { Link } from 'react-router-dom'
+import Icon from '@material-ui/core/Icon';
+import { Maps } from '@material-ui/icons';
 
 class MechanicList extends React.Component {
 	state = {
@@ -25,10 +28,11 @@ class MechanicList extends React.Component {
 			<div>
 				<Table>
 					<TableHead>
-						<TableRow>
+						<TableRow >
 							<TableCell>nazwa</TableCell>
 							<TableCell>ulica</TableCell>
 							<TableCell>miasto</TableCell>
+							<TableCell></TableCell>
 
 						</TableRow>
 					</TableHead>
@@ -36,7 +40,9 @@ class MechanicList extends React.Component {
 					<TableBody>
 						{mechanics && mechanics.map((mechanic) => {
 							return (
+
 								<TableRow key={`mechanic-${mechanic.id}`}>
+
 									<TableCell >
 										{mechanic.name}
 									</TableCell>
@@ -45,9 +51,14 @@ class MechanicList extends React.Component {
 									</TableCell>
 									<TableCell >
 										{mechanic.city}
+
+									</TableCell>
+									<TableCell>
+										<Link to='/'><Icon>directions_car</Icon> zobacz warsztat </Link>
 									</TableCell>
 
 								</TableRow>
+
 							)
 						})}
 					</TableBody>

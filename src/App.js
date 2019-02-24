@@ -4,9 +4,10 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Main from './routes/Main/Main';
  
 import ApplicationBar from './components/AppBar/AppBar';
-import Stats from './routes/Stats/Stats';   
-import MechanicList from './components/MechanicList/MechanicList';
+import Stats from './routes/Stats/Stats';    
 import Mechanic from './routes/Mechanic/Mechanic';
+import MechanicList from './routes/MechanicList/MechanicList';
+
 
 class App extends Component {
   render() {

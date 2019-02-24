@@ -50,7 +50,7 @@ class ApplicationBar extends React.Component {
 								</ListItem>
 							</Link>
 
-							<Link to="/mechanicList" onClick={this.toggleDrawer}>
+							<Link to="/mechanic-list" onClick={this.toggleDrawer}>
 								<ListItem button>
 										<ListItemText>Mechanic List</ListItemText>
 								</ListItem>
