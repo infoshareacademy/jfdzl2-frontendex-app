@@ -6,6 +6,7 @@ import Stats from './routes/Stats/Stats';
 import ApplicationBar from './components/AppBar/AppBar';
 import MechanicList from './components/MechanicList/MechanicList';
 
+
 class App extends Component {
   render() {
     return (
