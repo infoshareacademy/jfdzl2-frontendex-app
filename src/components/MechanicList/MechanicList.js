@@ -1,39 +1,57 @@
 import React from 'react';
-import {mechanics, services, carBrand} from '../../database/Database'
+import { mechanics, services, carBrand } from '../../database/Database'
 import Table from '@material-ui/core/Table';
+import TableRow from '@material-ui/core/TableRow';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableFooter from '@material-ui/core/TableFooter';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
+import TableHead from '@material-ui/core/TableHead';
 
 class MechanicList extends React.Component {
     state = {
         mechanics: null
     }
 
-    componentDidMount(){
+    componentDidMount() {
+        console.log(mechanics)
         this.setState({
             mechanics: mechanics
         })
     }
 
     render() {
-        const {mechanics} = this.state;
+        const { mechanics } = this.state;
 
         return (
             <div>
                 <Table>
-                    <TableRow>
-                {mechanics && mechanics.map((mechanic) => {
-                    return (
-                        <div>
-                            {mechanic.name}
-                            
-                            </div>
-                    )
-                })}
-                </TableRow>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>nazwa</TableCell>
+                            <TableCell>ulica</TableCell>
+                            <TableCell>miasto</TableCell>
+
+                        </TableRow>
+                    </TableHead>
+
+                    <TableBody>
+                        {mechanics && mechanics.map((mechanic) => {
+                            return (
+                                <TableRow key={`mechanic-${mechanic.id}`}>
+                                    <TableCell >
+                                        {mechanic.name}
+                                    </TableCell>
+                                    <TableCell >
+                                        {mechanic.street}
+                                    </TableCell>
+                                    <TableCell >
+                                        {mechanic.city}
+                                    </TableCell>
+
+                                </TableRow>
+                            )
+                        })}
+                    </TableBody>
+
                 </Table>
             </div>
         )
