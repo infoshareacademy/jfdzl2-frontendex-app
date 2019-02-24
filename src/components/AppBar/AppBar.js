@@ -27,7 +27,7 @@ class ApplicationBar extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <AppBar position="static">
+                <AppBar position="fixed">
                     <Toolbar>
                         <IconButton onClick={this.toggleDrawer} color="inherit" aria-label="Menu">
                             <MenuIcon />

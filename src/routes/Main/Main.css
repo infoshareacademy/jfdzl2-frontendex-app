@@ -1,0 +1,42 @@
+.main-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(to top, #9d21b3, #a53cb8, #ad52bd, #b465c2, #bb77c7, #c089cf, #c69bd7, #cdacde, #d6c1e9, #e1d6f1, #efebf9, #ffffff);
+    
+}
+
+.content {
+width: 80vh;
+height: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10%;
+    margin-top: 10%;
+}
+
+.description-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 20%;
+}
+
+
+.app-name {
+    font-size: 4em;
+    color: white;
+    margin: 0;
+}
+
+h2 {
+    color: white;
+}
