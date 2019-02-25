@@ -1,4 +1,4 @@
-.container-flex {
+.main-container-flex {
   display: flex;
   justify-content: center;
 }
@@ -8,24 +8,24 @@
   height: 100vh;
   background-image: linear-gradient(
       to top,
-      rgba(157, 33, 179, 0.68),
-      rgba(165, 60, 184, 0.68),
-      rgba(173, 82, 189, 0.68),
-      rgba(180, 101, 194, 0.68),
-      rgba(187, 119, 199, 0.68),
-      rgba(192, 137, 207, 0.68),
-      rgba(198, 155, 215, 0.68),
-      rgba(205, 172, 222, 0.68),
-      rgba(214, 193, 233, 0.68),
-      rgba(225, 214, 241, 0.68),
-      rgba(239, 235, 249, 0.68),
-      rgba(255, 255, 255, 0.68)
+      rgba(157, 33, 179, 0.8),
+      rgba(165, 60, 184, 0.8),
+      rgba(173, 82, 189, 0.8),
+      rgba(180, 101, 194, 0.8),
+      rgba(187, 119, 199, 0.8),
+      rgba(192, 137, 207, 0.8),
+      rgba(198, 155, 215, 0.8),
+      rgba(205, 172, 222, 0.8),
+      rgba(214, 193, 233, 0.8),
+      rgba(225, 214, 241, 0.8),
+      rgba(239, 235, 249, 0.8),
+      rgba(255, 255, 255, 0.8)
     ),
     url("/background.jpg");
   background-size: cover;
 }
 
-.content {
+.main-content {
   width: 80vh;
   height: 100%;
   display: flex;
@@ -34,7 +34,7 @@
   align-items: center;
 }
 
-.logo-container {
+.main-logo-container {
   display: flex;
   justify-content: center;
   margin-top: 10%;
@@ -44,27 +44,27 @@
   height: 150px;
 }
 
-.description-container {
+.main-description-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
 }
 
-.app-name {
+.main-app-name {
   font-size: 2em;
   color: white;
   margin: 0;
 }
 
-h2 {
+.main-container-flex > h2 {
   color: white;
   margin: 0;
   font-size: 1.6em;
   text-align: center;
 }
 
-.buttons-container {
+.main-buttons-container {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -73,10 +73,10 @@ h2 {
 }
 
 @media (min-width: 350px) {
-  .app-name {
+  .main-app-name {
     font-size: 4em;
   }
-  h2 {
+  .main-container-flex > h2 {
     font-size: 2em;
   }
 }
