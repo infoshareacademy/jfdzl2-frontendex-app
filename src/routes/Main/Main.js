@@ -21,7 +21,7 @@ const styles = theme => ({
     justifyContent: "center",
     height: "3em",
     width: "10em",
-    margin: "5%",
+    margin: "2%",
     textDecoration: "none",
     [theme.breakpoints.up("sm")]: {
       height: "3em",
@@ -53,6 +53,7 @@ function Main(props) {
                 Zaloguj
               </Fab>
             </Link>
+            <Link to="/register" className={classes.linkStyle}>
             <Fab
               variant="extended"
               aria-label="Add"
@@ -60,6 +61,7 @@ function Main(props) {
             >
               Dołącz do nas
             </Fab>
+            </Link>
           </div>
         </div>
       </div>
