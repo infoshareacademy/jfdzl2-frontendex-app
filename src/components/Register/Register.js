@@ -2,10 +2,9 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {Link} from 'react-router-dom';
 
-import "./LoginForm.css";
+import "./Register.css";
 
 const styles = theme => ({
   textField: {
@@ -23,14 +22,12 @@ const styles = theme => ({
       height: "3em",
       width: "20em"
     }
-  },
-  loginLink: {
-      textDecoration: "none"
   }
 });
 
-class LoginForm extends React.Component {
+class Register extends React.Component {
   state = {
+    name: "",
     login: "",
     password: ""
   };
@@ -39,11 +36,15 @@ class LoginForm extends React.Component {
     const { classes } = this.props;
     return (
       <div className="login-form-container">
-        <div className="login-form-header login-bottom-border">
-            <p>LOGOWANIE</p>
+        <div className="login-form-header">
+          <div className="login-bottom-border-register">
+            <p><Link to='/loginForm'>LOGOWANIE</Link></p>
+          </div>
+          <div className="login-bottom-border">
+            <p>REJESTRACJA</p>
+          </div>
         </div>
         <div className="login-container-flex">
-          <FontAwesomeIcon icon="user" className="login-icon" />
           <TextField
             id="login"
             label="Login"
@@ -53,7 +54,6 @@ class LoginForm extends React.Component {
           />
         </div>
         <div className="login-container-flex">
-          <FontAwesomeIcon icon="lock" className="login-icon" />
           <TextField
             id="password"
             label="Password"
@@ -78,4 +78,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default withStyles(styles)(LoginForm);
+export default withStyles(styles)(Register);
