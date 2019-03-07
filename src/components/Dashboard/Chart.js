@@ -7,76 +7,78 @@ class Chart extends React.Component {
         return (
             <div className="chart-container">
                 <div className="chart-title">
-                    <h2>Mamy już 0 zarejestrowanych warsztatów</h2>
+                <h2>Mamy 0 zarejestrowanych warsztatów</h2>
                 </div>
-                <ResponsivePie
-                    data={[
-                        {
-                            id: 'Elektromechanika',
-                            label: 'Elektromechanika',
-                            value: 139,
+                    <ResponsivePie
+                        data={[
+                            {
+                                id: 'Elektromechanika',
+                                label: 'Elektromechanika',
+                                value: 139,
 
-                        },
-                        {
-                            id: 'Instalacje LPG',
-                            label: 'Instalacje LPG',
-                            value: 200,
+                            },
+                            {
+                                id: 'Instalacje LPG',
+                                label: 'Instalacje LPG',
+                                value: 200,
 
-                        },
-                        {
-                            id: 'Wulkanizacja',
-                            label: 'Wulkanizacja',
-                            value: 472,
+                            },
+                            {
+                                id: 'Wulkanizacja',
+                                label: 'Wulkanizacja',
+                                value: 472,
 
-                        },
-                        {
-                            id: 'Klimatyzacja',
-                            label: 'Klimatyzacja',
-                            value: 100,
+                            },
+                            {
+                                id: 'Klimatyzacja',
+                                label: 'Klimatyzacja',
+                                value: 100,
 
-                        },
-                        {
-                            id: 'Tuning',
-                            label: 'Tuning',
-                            value: 427,
+                            },
+                            {
+                                id: 'Tuning',
+                                label: 'Tuning',
+                                value: 427,
 
-                        },
-                        {
-                            id: 'Kosmetyka aut',
-                            label: 'Kosmetyka au',
-                            value: 237,
+                            },
+                            {
+                                id: 'Kosmetyka aut',
+                                label: 'Kosmetyka au',
+                                value: 237,
 
-                        }
-                    ]}
-                    margin={{
-                        "top": 70,
-                        "right": 0,
-                        "bottom": 40,
-                        "left": 0
-                    }}
-                    innerRadius={0.5}
-                    cornerRadius={5}
-                    colors="spectral"
-                    colorBy="id"
-                    borderWidth={1}
-                    borderColor="inherit:darker(0.2)"
-                    radialLabelsSkipAngle={0}
-                    radialLabelsTextXOffset={3}
-                    radialLabelsTextColor="#fff"
-                    radialLabelsLinkOffset={0}
-                    radialLabelsLinkDiagonalLength={16}
-                    radialLabelsLinkHorizontalLength={19}
-                    radialLabelsLinkStrokeWidth={2}
-                    radialLabelsLinkColor="inherit"
-                    slicesLabelsSkipAngle={10}
-                    slicesLabelsTextColor="#333333"
-                    animate={true}
-                    motionStiffness={90}
-                    motionDamping={15}
-                    isInteractive={false}
-    
-                />
+                            }
+                        ]}
+                        margin={{
+                            "top": 30,
+                            "right": 0,
+                            "bottom": 30,
+                            "left": 0
+                        }}
+                        innerRadius={0.5}
+                        cornerRadius={5}
+                        colors="spectral"
+                        colorBy="id"
+                        borderWidth={1}
+                        borderColor="inherit:darker(0.2)"
+                        radialLabelsSkipAngle={0}
+                        radialLabelsTextXOffset={3}
+                        radialLabelsTextColor="#fff"
+                        radialLabelsLinkOffset={0}
+                        radialLabelsLinkDiagonalLength={16}
+                        radialLabelsLinkHorizontalLength={19}
+                        radialLabelsLinkStrokeWidth={2}
+                        radialLabelsLinkColor="inherit"
+                        slicesLabelsSkipAngle={10}
+                        slicesLabelsTextColor="#333333"
+                        animate={true}
+                        motionStiffness={90}
+                        motionDamping={15}
+                        isInteractive={false}
+                        
+                    />
+            
             </div>
+
         )
     }
 }

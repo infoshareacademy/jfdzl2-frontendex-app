@@ -7,12 +7,14 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div className="background-container">
+      <div>
+      <div className="background-container"></div>
         <div className="stats-main-container">
           <AppFeatures />
           <Chart />
         </div>
       </div>
+      
     )
   }
 }

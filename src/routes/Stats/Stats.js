@@ -7,7 +7,7 @@ class Stats  extends Component{
     render(){
 
         return(
-            <div><Dashboard/></div>
+            <Dashboard/>
         )
     }
 }

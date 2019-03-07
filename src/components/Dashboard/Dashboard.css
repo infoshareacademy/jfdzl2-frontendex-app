@@ -1,23 +1,43 @@
-.background-container {
-  /* width: 100%; */
-  height: 100%;
+.background-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -10;
+  height: 100vh;
+  width: 100vw;
   background-image: linear-gradient( to top, rgba(0, 0, 0, 0.8), rgba(51, 36, 36, 0.8), rgba(99, 67, 61, 0.8), rgba(146, 104, 82, 0.8), rgba(188, 147, 101, 0.8), rgba(210, 167, 124, 0.8), rgba(233, 188, 148, 0.8), rgba(255, 209, 173, 0.8), rgba(255, 215, 206, 0.8), rgba(255, 226, 235, 0.8), rgba(252, 240, 250, 0.8), rgba(252, 252, 252, 0.8)), url("/corvette.jpg");
   background-size: cover;
-  vertical-align:top;
+  background-position: center;
+ 
 }
-
 .stats-main-container {
+  height: 100vh;
+
   display: flex;
+  
   flex-direction: row;
+  overflow-y: scroll;
 }
 
 .chart-container {
+  height: 300px;
   margin: auto auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 500px;
+  /* height: 500px;  */
   width: 50%;
+}
+
+.features-container{
+
+    height: 100%;
+    background-color: rgba(255,0,0,0.2);
+    /* padding: 30px 20px 0px; */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .feature {
@@ -37,11 +57,9 @@
 }
 
 .card-container {
-  height: 100vh;
+  /* height: 100vh; */
   width: 40%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  
 }
 
 .separator {
@@ -55,6 +73,8 @@
   text-align: center;
 }
 
+
+
 @media screen and (max-width: 1140px) {
   .stats-main-container {
     flex-direction: column;
@@ -65,10 +85,16 @@
   .card-container{
     margin-top: 40px;
     width: 100%;
-    height: auto;
+    height: 100vh;
+    padding-left: 30px;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+   
+    justify-content: center;
   }
   .chart-container {
-    height: 500px;
+    height: 300px;
     width: 100%;
   }
 }

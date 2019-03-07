@@ -12,7 +12,7 @@ const StyledCard = withStyles({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        height: 'auto',
+        // height: '100vh',
         width: '500px',
         marginTop: '47px',
         padding: '8px 0px',
@@ -21,7 +21,7 @@ const StyledCard = withStyles({
         border: 0,
         color: 'white',
         boxShadow: 'none',
-        overflow: 'auto',
+        overflow: 'hidden',
         ['@media (max-width: 1140px)']: { 
             width: '95%'
           }
@@ -32,28 +32,28 @@ class AppFeatures extends React.Component {
     render() {
         return (
             <div className="card-container">
-                <StyledCard>
+                {/* <StyledCard> */}
                     <div className="features-container">
                         <div className="feature">
-                            <FontAwesomeIcon icon={faTools} size="3x" className="tools-icon" />
+                            <FontAwesomeIcon icon={faTools} size="2x" className="tools-icon" />
                             <h2>Znajdź odpowiedniego mechanika dla swojego samochodu</h2>
                             <hr className="separator" />
                             <p>Przeglądając opinie o warsztatach samochodowych wybierz sprawdzonego i polecanego przez innych kierowców mechanika.</p>
                         </div>
                         <div className="feature">
-                            <FontAwesomeIcon icon={faCalendarAlt} size="3x" className="calendar-icon" />
+                            <FontAwesomeIcon icon={faCalendarAlt} size="2x" className="calendar-icon" />
                             <h2>Zarezerwuj termin naprawy online</h2>
                             <hr className="separator" />
                             <p>Zarezerwuj naprawę w jednym z zarejestrowanych warsztatów samochodowych.</p>
                         </div>
                         <div className="feature">
-                            <FontAwesomeIcon icon={faUserCheck} size="3x" className="user-icon" />
+                            <FontAwesomeIcon icon={faUserCheck} size="2x" className="user-icon" />
                             <h2>Zdobądź nowych klientów dla swojego warsztatu</h2>
                             <hr className="separator" />
                             <p>Co miesiąc odwiedza nas 0 kierowców. Zarejestruj swój warsztat aby dotrzeć do nich</p>
                         </div>
                     </div>
-                </StyledCard>
+                {/* </StyledCard> */}
             </div>
         )
     }
