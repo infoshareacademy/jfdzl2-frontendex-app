@@ -1,133 +1,81 @@
 import React from 'react'
-import { Doughnut } from 'react-chartjs-2';
-
-const data = {
-    labels: [
-        'Elektromechaników',
-        'Lakierników',
-        'Blacharzy',
-        'aaaaaaaa'
-    ],
-    datasets: [{
-        data: [600, 200, 300, 500],
-        backgroundColor: [
-            '#FF6384',
-            '#36A2EB',
-            '#FFCE56',
-            '#EACe54'
-        ],
-        hoverBackgroundColor: [
-            '#FF6384',
-            '#36A2EB',
-            '#FFCE56'
-        ],
-        borderColor: [
-            '#eee',
-            '#eee',
-            '#eee'
-        ]
-    }]
-};
-
-
+import { ResponsivePie } from '@nivo/pie'
+import './Dashboard.css'
 class Chart extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="chart-container">
+                <div className="chart-title">
+                    <h2>Mamy już 0 zarejestrowanych warsztatów</h2>
+                </div>
+                <ResponsivePie
+                    data={[
+                        {
+                            id: 'Elektromechanika',
+                            label: 'Elektromechanika',
+                            value: 139,
 
-                <Doughnut
-                    data={data}
-                    width={500}
-                    height={500}
-                    options={{
-                        title: {
-                            display: true,
-                            text: `Zarejestrowani mechanicy`,
-                            fontSize: 20
                         },
-                       
-                        legend: false,
-                        maintainAspectRatio: false,
-                        tooltips: {
-                            // Disable the on-canvas tooltip
-                            enabled: false,
+                        {
+                            id: 'Instalacje LPG',
+                            label: 'Instalacje LPG',
+                            value: 200,
 
-                            custom: function (tooltipModel) {
-                                // Tooltip Element
-                                var tooltipEl = document.getElementById('chartjs-tooltip');
+                        },
+                        {
+                            id: 'Wulkanizacja',
+                            label: 'Wulkanizacja',
+                            value: 472,
 
-                                // Create element on first render
-                                if (!tooltipEl) {
-                                    tooltipEl = document.createElement('div');
-                                    tooltipEl.id = 'chartjs-tooltip';
-                                    tooltipEl.innerHTML = "<table></table>";
-                                    document.body.appendChild(tooltipEl);
-                                }
+                        },
+                        {
+                            id: 'Klimatyzacja',
+                            label: 'Klimatyzacja',
+                            value: 100,
 
-                                // Hide if no tooltip
-                                if (tooltipModel.opacity === 0) {
-                                    tooltipEl.style.opacity = 0;
-                                    return;
-                                }
+                        },
+                        {
+                            id: 'Tuning',
+                            label: 'Tuning',
+                            value: 427,
 
-                                // Set caret Position
-                                tooltipEl.classList.remove('above', 'below', 'no-transform');
-                                if (tooltipModel.yAlign) {
-                                    tooltipEl.classList.add(tooltipModel.yAlign);
-                                } else {
-                                    tooltipEl.classList.add('no-transform');
-                                }
+                        },
+                        {
+                            id: 'Kosmetyka aut',
+                            label: 'Kosmetyka au',
+                            value: 237,
 
-                                function getBody(bodyItem) {
-                                    return bodyItem.lines;
-                                }
-
-                                // Set Text
-                                if (tooltipModel.body) {
-                                    var titleLines = tooltipModel.title || [];
-                                    var bodyLines = tooltipModel.body.map(getBody);
-
-                                    var innerHtml = '<thead>';
-
-                                    titleLines.forEach(function (title) {
-                                        innerHtml += '<tr><th>' + title + '</th></tr>';
-                                    });
-                                    innerHtml += '</thead><tbody>';
-
-                                    bodyLines.forEach(function (body, i) {
-                                        var colors = tooltipModel.labelColors[i];
-                                        var style = 'background:' + colors.backgroundColor;
-                                        style += '; border-color:' + colors.borderColor;
-                                        style += '; border-width: 2px';
-                                        var span = '<span style="' + style + '"></span>';
-                                        innerHtml += '<tr><td>' + span + body + '</td></tr>';
-                                    });
-                                    innerHtml += '</tbody>';
-
-                                    var tableRoot = tooltipEl.querySelector('table');
-                                    tableRoot.innerHTML = innerHtml;
-                                }
-
-                                // `this` will be the overall tooltip
-                                var position = this._chart.canvas.getBoundingClientRect();
-
-                                // Display, position, and set styles for font
-                                tooltipEl.style.opacity = 1;
-                                tooltipEl.style.position = 'absolute';
-                                tooltipEl.style.left = position.left + window.pageXOffset + tooltipModel.caretX + 'px';
-                                tooltipEl.style.top = position.top + window.pageYOffset + tooltipModel.caretY + 'px';
-                                tooltipEl.style.fontFamily = tooltipModel._bodyFontFamily;
-                                tooltipEl.style.fontSize = tooltipModel.bodyFontSize + 'px';
-                                tooltipEl.style.fontStyle = tooltipModel._bodyFontStyle;
-                                tooltipEl.style.padding = tooltipModel.yPadding + 'px ' + tooltipModel.xPadding + 'px';
-                                tooltipEl.style.pointerEvents = 'none';
-
-                            }
                         }
+                    ]}
+                    margin={{
+                        "top": 70,
+                        "right": 0,
+                        "bottom": 40,
+                        "left": 0
                     }}
+                    innerRadius={0.5}
+                    cornerRadius={5}
+                    colors="spectral"
+                    colorBy="id"
+                    borderWidth={1}
+                    borderColor="inherit:darker(0.2)"
+                    radialLabelsSkipAngle={0}
+                    radialLabelsTextXOffset={3}
+                    radialLabelsTextColor="#fff"
+                    radialLabelsLinkOffset={0}
+                    radialLabelsLinkDiagonalLength={16}
+                    radialLabelsLinkHorizontalLength={19}
+                    radialLabelsLinkStrokeWidth={2}
+                    radialLabelsLinkColor="inherit"
+                    slicesLabelsSkipAngle={10}
+                    slicesLabelsTextColor="#333333"
+                    animate={true}
+                    motionStiffness={90}
+                    motionDamping={15}
+                    isInteractive={false}
+    
                 />
-
             </div>
         )
     }
