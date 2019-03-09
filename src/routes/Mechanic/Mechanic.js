@@ -29,6 +29,7 @@ TabContainer.propTypes = {
 class Mechanic extends Component {
 	state = {
 		value: 0,
+		mechanic: {},
 	};
 
 	handleChange = (event, value) => {
@@ -37,23 +38,33 @@ class Mechanic extends Component {
 
 	componentDidMount() {
 
-		firebase.database.collection("brands").get().then(function (querySnapshot) {
-			querySnapshot.forEach(function (doc) {
-				// doc.data() is never undefined for query doc snapshots
-				console.log(doc.id, " => ", doc.data());
-			});
-		});
+		// GET /places/{:id}.json
+
+		const id = this.props.match.params.id;
+		fetch(`https://jfdzl2-motoondo-2.firebaseio.com/places/${id}.json`)
+		.then(response => response.json())
+		.then(data => {
+			this.setState({ mechanic: data });
+		})
+
+		// firebase.database.collection("brands").get().then(function (querySnapshot) {
+		// 	querySnapshot.forEach(function (doc) {
+		// 		// doc.data() is never undefined for query doc snapshots
+		// 		console.log(doc.id, " => ", doc.data());
+		// 	});
+		// });
 
 
 	}
 
 	render() {
 		const { classes } = this.props;
-		const { value } = this.state;
+		const { value, mechanic } = this.state;
 
 		return (
 			<React.Fragment>
-				<h1 className="mechanic__header"> Nazwa zakładu mechanicznego/Heading </h1>
+				<h1 className="mechanic__header"> {mechanic.name} </h1>
+				<p>{mechanic.street}, {mechanic.city}</p>
 
 				<AppBar position="static">
 					<Tabs
