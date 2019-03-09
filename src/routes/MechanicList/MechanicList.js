@@ -67,6 +67,10 @@ class MechanicList extends React.Component {
 									<TableCell>
 										<Link to={`/mechanic/${mechanic.id}`}><Icon>directions_car</Icon> zobacz warsztat </Link>
 									</TableCell>
+									<TableCell >
+										<Link to={`/edit/${mechanic.id}`}><button>Edytuj</button></Link>
+
+									</TableCell>
 
 								</TableRow>
 

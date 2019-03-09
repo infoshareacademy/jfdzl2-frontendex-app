@@ -12,6 +12,7 @@ import MechanicCreate from './routes/Mechanic/MechanicCreate';
 import MechanicList from './routes/MechanicList/MechanicList';
 import Login from './routes/Login/Login';
 import Register from './routes/Register/Register';
+import MechanicEdit from './routes/Mechanic/MechanicEdit';
 
 library.add(faUser)
 library.add(faLock)
@@ -28,6 +29,7 @@ class App extends Component {
           <Route exact path="/" component={Main} />
           <Route path="/stats" component={Stats} />
           <Route path="/create" component={MechanicCreate} />
+          <Route path="/edit/:id" component={MechanicEdit}/>
           <Route path="/mechanic/:id" component={Mechanic} />
           <Route path="/mechanic-list" component={MechanicList} />
           <Route path="/login" component={Login}/>
