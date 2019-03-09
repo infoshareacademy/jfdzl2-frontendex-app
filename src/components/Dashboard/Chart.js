@@ -49,9 +49,9 @@ class Chart extends React.Component {
                             }
                         ]}
                         margin={{
-                            "top": 30,
-                            "right": 0,
-                            "bottom": 30,
+                            "top": 60,
+                            "right": 20,
+                            "bottom": 60,
                             "left": 0
                         }}
                         innerRadius={0.5}
@@ -64,8 +64,8 @@ class Chart extends React.Component {
                         radialLabelsTextXOffset={3}
                         radialLabelsTextColor="#fff"
                         radialLabelsLinkOffset={0}
-                        radialLabelsLinkDiagonalLength={16}
-                        radialLabelsLinkHorizontalLength={19}
+                        radialLabelsLinkDiagonalLength={10}
+                        radialLabelsLinkHorizontalLength={10}
                         radialLabelsLinkStrokeWidth={2}
                         radialLabelsLinkColor="inherit"
                         slicesLabelsSkipAngle={10}
@@ -74,9 +74,7 @@ class Chart extends React.Component {
                         motionStiffness={90}
                         motionDamping={15}
                         isInteractive={false}
-                        
                     />
-            
             </div>
 
         )
