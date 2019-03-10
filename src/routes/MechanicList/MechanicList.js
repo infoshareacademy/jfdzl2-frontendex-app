@@ -1,5 +1,5 @@
 import React from 'react';
-import { mechanics, services, carBrand } from '../../database/Database'
+import { services, carBrand } from '../../database/Database'
 import Table from '@material-ui/core/Table';
 import TableRow from '@material-ui/core/TableRow';
 import TableBody from '@material-ui/core/TableBody';
@@ -9,16 +9,27 @@ import { Link } from 'react-router-dom'
 import Icon from '@material-ui/core/Icon';
 import { Maps } from '@material-ui/icons';
 
+import db from '../../database/firebase';
+
 class MechanicList extends React.Component {
 	state = {
-		mechanics: null
+		mechanics: []
 	}
 
 	componentDidMount() {
-		console.log(mechanics)
-		this.setState({
-			mechanics: mechanics
-		})
+		db.ref('/places').on('value', snapshot => {
+			const places = [];
+			Object.entries(snapshot.val()).forEach(elem => {
+				const place = {
+					id: elem[0],
+					...elem[1]
+				}
+				places.push(place);
+			});
+			this.setState({
+				mechanics: places
+			})
+		});
 	}
 
 	render() {
@@ -55,6 +66,10 @@ class MechanicList extends React.Component {
 									</TableCell>
 									<TableCell>
 										<Link to={`/mechanic/${mechanic.id}`}><Icon>directions_car</Icon> zobacz warsztat </Link>
+									</TableCell>
+									<TableCell >
+										<Link to={`/edit/${mechanic.id}`}><button>Edytuj</button></Link>
+
 									</TableCell>
 
 								</TableRow>

@@ -12,7 +12,7 @@ import {mechanics} from '../../database/Database';
 
 import '../Mechanic/Mechanic.css';
 
-import firebase from '../../database/firebase';
+import db from '../../database/firebase';
 
 
 function TabContainer(props) {
@@ -31,6 +31,7 @@ TabContainer.propTypes = {
 class Mechanic extends Component {
 	state = {
 		value: 0,
+		mechanic: {},
 	};
 	
 
@@ -39,27 +40,20 @@ class Mechanic extends Component {
 	};
 
 	componentDidMount() {
-
-		const mechanic = _.find(mechanics, {id: 1});
-		console.log('mechanic', mechanic)
-
-		firebase.database.collection("brands").get().then(function (querySnapshot) {
-			querySnapshot.forEach(function (doc) {
-				// doc.data() is never undefined for query doc snapshots
-				console.log(doc.id, " => ", doc.data());
-			});
+		const id = this.props.match.params.id;
+		db.ref(`places/${id}`).on('value', snapshot => {
+			this.setState({ mechanic: snapshot.val() });
 		});
-
-
 	}
 
 	render() {
 		const { classes } = this.props;
-		const { value } = this.state;
+		const { value, mechanic } = this.state;
 
 		return (
 			<React.Fragment>
-				<h1 className="mechanic__header"> Nazwa zakładu mechanicznego/Heading </h1>
+				<h1 className="mechanic__header"> {mechanic.name} </h1>
+				<p>{mechanic.street}, {mechanic.city}</p>
 
 				<AppBar position="static">
 					<Tabs

@@ -1,8 +1,8 @@
 export default {
-  apiKey: "AIzaSyB12ejnIPfX3aTTZEZKhUy_fyHcZp-pXAs",
-  authDomain: "motoondo.firebaseapp.com",
-  databaseURL: "https://motoondo.firebaseio.com",
-  projectId: "motoondo",
-  storageBucket: "motoondo.appspot.com",
-  messagingSenderId: "525723095369"
+    apiKey: "AIzaSyCVrSJZ41WSzGWMbpoCPAxiRdlRpyV_vd0",
+    authDomain: "jfdzl2-motoondo-2.firebaseapp.com",
+    databaseURL: "https://jfdzl2-motoondo-2.firebaseio.com",
+    projectId: "jfdzl2-motoondo-2",
+    storageBucket: "jfdzl2-motoondo-2.appspot.com",
+    messagingSenderId: "353877774432"
 };
