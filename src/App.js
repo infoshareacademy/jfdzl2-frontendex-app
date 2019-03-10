@@ -18,13 +18,14 @@ library.add(faUser)
 library.add(faLock)
 
 
+
 class App extends Component {
   render() {
     return (
       <Router>
 
         <div>
-        <ApplicationBar></ApplicationBar>
+          <ApplicationBar></ApplicationBar>
 
           <Route exact path="/" component={Main} />
           <Route path="/stats" component={Stats} />
