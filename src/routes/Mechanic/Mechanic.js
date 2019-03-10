@@ -14,6 +14,8 @@ import '../Mechanic/Mechanic.css';
 
 import db from '../../database/firebase';
 
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+
 
 function TabContainer(props) {
 	return (
@@ -72,7 +74,18 @@ class Mechanic extends Component {
 					onChangeIndex={this.handleChangeIndex}
 				>
 					<TabContainer> Usługi </TabContainer>
-					<TabContainer> Lokalizacja </TabContainer>
+					<TabContainer> 
+						<Map google={this.props.google} zoom={14}>
+							<Marker onClick={this.onMarkerClick}
+											name={'Current location'} />
+
+							<InfoWindow onClose={this.onInfoWindowClose}>
+									<div>
+										{/* <h1>{this.state.selectedPlace.name}</h1> */}
+									</div>
+							</InfoWindow>
+							</Map> 
+					 </TabContainer>
 					<TabContainer> Ocena </TabContainer>
 
 				</SwipeableViews>
@@ -83,4 +96,7 @@ class Mechanic extends Component {
 	}
 }
 
-export default Mechanic;
+export default GoogleApiWrapper({
+  apiKey: ("AIzaSyB_amRKdoVSbdFmSNB9wHW79fCRirU4h24")
+})(Mechanic)
+
