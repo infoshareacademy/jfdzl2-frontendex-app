@@ -45,7 +45,6 @@ class Mechanic extends Component {
 			this.setState({ mechanic: snapshot.val() });
 			console.log(snapshot.val())
 		});
-
 	}
 
 	render() {
@@ -56,6 +55,12 @@ class Mechanic extends Component {
 			width: '100%',
 			height: '650px'
 		}
+		let splitCordinate = [0, 0];
+
+		if (mechanic.coordinates) {
+			splitCordinate = mechanic.coordinates.split(", ");
+		}
+
 
 		return (
 			<React.Fragment>
@@ -85,16 +90,15 @@ class Mechanic extends Component {
 							<Map
 								google={this.props.google}
 								zoom={18}
-								initialCenter={{
-									lat: 51.2503143,
-									lng: 22.570589
+								center={{
+									lat: splitCordinate[0],
+									lng: splitCordinate[1]
 								}}>
 								<Marker onClick={this.onMarkerClick}
 									name={'Current location'}
 									title={'The marker`s title will appear as a tooltip.'}
 									name={'SOMA'}
-									position={{ lat: 51.2503143, lng: 22.570589 }} />
-
+									position={{ lat: splitCordinate[0], lng: splitCordinate[1] }}
 								/>
 
 								<InfoWindow onClose={this.onInfoWindowClose}>
