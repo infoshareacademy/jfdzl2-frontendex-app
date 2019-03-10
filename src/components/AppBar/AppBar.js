@@ -13,11 +13,22 @@ import { withStyles } from "@material-ui/core/styles";
 
 import './AppBar.css'
 
-const styles = {
+const styles = theme => ({
     appBar: {
-      backgroundColor: 'rgba(157, 33, 179)',
+        backgroundColor: 'rgba(157, 33, 179)',
     },
-  };
+    list: {
+        backgroundColor: 'rgba(179, 179, 179, 0.2)',
+        height: '100%',
+        width: "300px",
+        paddingTop: "20px",
+    },
+    drawer: {
+        opacity: 0.93,
+    }
+    
+});
+
 
 class ApplicationBar extends React.Component {
 
@@ -32,6 +43,7 @@ class ApplicationBar extends React.Component {
 
     render() {
         const { classes } = this.props;
+        console.log('classes', classes);
         return (
             <React.Fragment>
                 <AppBar position="fixed" className={classes.appBar}>
@@ -42,36 +54,36 @@ class ApplicationBar extends React.Component {
 
                     </Toolbar>
                 </AppBar>
-                <Drawer open={this.state.open} onClose={this.toggleDrawer} >
-                <List>
-							<Link to="/"  onClick={this.toggleDrawer}>
-								<ListItem button>
-									<ListItemText> Home</ListItemText> 
-								</ListItem>
-							</Link>
+                <Drawer open={this.state.open} onClose={this.toggleDrawer} className={classes.drawer}>
+                    <List className={classes.list}>
+                        <Link to="/" onClick={this.toggleDrawer} style={{ textDecoration: 'none'}}>
+                            <ListItem button>
+                                <ListItemText classes={{primary: 'list-item-text'}}> START</ListItemText>
+                            </ListItem>
+                        </Link>
 
-							<Link to="/stats" onClick={this.toggleDrawer}>
-								<ListItem button>
-										<ListItemText>Stats</ListItemText>
-								</ListItem>
-							</Link>
+                        <Link to="/stats" onClick={this.toggleDrawer} style={{ textDecoration: 'none'}}>
+                            <ListItem button>
+                                <ListItemText classes={{primary: 'list-item-text'}}>Stats</ListItemText>
+                            </ListItem>
+                        </Link>
 
-							<Link to="/mechanic-list" onClick={this.toggleDrawer}>
-								<ListItem button>
-										<ListItemText>Mechanic List</ListItemText>
-								</ListItem>
-							</Link>
+                        <Link to="/mechanic-list" onClick={this.toggleDrawer} style={{ textDecoration: 'none'}}>
+                            <ListItem button>
+                                <ListItemText classes={{primary: 'list-item-text'}}>Mechanic List</ListItemText>
+                            </ListItem>
+                        </Link>
 
-							<Link to="/mechanic" onClick={this.toggleDrawer}>
-								<ListItem button>
-										<ListItemText>Mechanic</ListItemText>
-								</ListItem>
-							</Link>
+                        <Link to="/mechanic" onClick={this.toggleDrawer} style={{ textDecoration: 'none'}}>
+                            <ListItem button>
+                                <ListItemText classes={{primary: 'list-item-text'}}>Mechanic</ListItemText>
+                            </ListItem>
+                        </Link>
 
-							<ListItem button >
-									<ListItemText />
-							</ListItem>
-						</List>
+                        <ListItem button >
+                            <ListItemText />
+                        </ListItem>
+                    </List>
                 </Drawer>
             </React.Fragment>
 
