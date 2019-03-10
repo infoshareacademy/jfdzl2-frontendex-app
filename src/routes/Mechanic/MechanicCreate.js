@@ -1,5 +1,7 @@
 import React from 'react';
 
+import db from '../../database/firebase';
+
 class MechanicCreate extends React.Component {
 
   state = {
@@ -13,13 +15,8 @@ class MechanicCreate extends React.Component {
   }
 
   handleSubmit = event => {
-    fetch('https://jfdzl2-motoondo-2.firebaseio.com/places.json', {
-      method: 'POST',
-      body: JSON.stringify(this.state)
-    })
-		.then(response => response.json())
-		.then(data => {
-      this.props.history.push(`/mechanic/${data.name}`);
+    db.ref('/places').push(this.state).then(data => {
+      this.props.history.push(`/mechanic/${data.key}`);
     });
   }
 

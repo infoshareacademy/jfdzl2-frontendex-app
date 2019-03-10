@@ -1,4 +1,5 @@
 import React from 'react';
+import db from '../../database/firebase';
 
 class MechanicEdit extends React.Component {
 
@@ -14,35 +15,19 @@ class MechanicEdit extends React.Component {
 
   componentDidMount() {
 
-    // GET /places/{:id}.json
 
     const id = this.props.match.params.id;
-    fetch(`https://jfdzl2-motoondo-2.firebaseio.com/places/${id}.json`)
-    .then(response => response.json())
-    .then(data => {
-        this.setState(data);
-    })
-
-    // firebase.database.collection("brands").get().then(function (querySnapshot) {
-    // 	querySnapshot.forEach(function (doc) {
-    // 		// doc.data() is never undefined for query doc snapshots
-    // 		console.log(doc.id, " => ", doc.data());
-    // 	});
-    // });
-
+    db.ref(`places/${id}`).on('value', snapshot => {
+			this.setState(snapshot.val());
+		});
 
 }
 
   handleSubmit = event => {
 
     const id = this.props.match.params.id;
-    fetch(`https://jfdzl2-motoondo-2.firebaseio.com/places/${id}.json`, {
-      method: 'PATCH',
-      body: JSON.stringify(this.state)
-    })
-		.then(response => response.json())
-		.then(data => {
-      this.props.history.push('/mechanic-list');
+    db.ref(`/places/${id}`).set(this.state).then(data => {
+      this.props.history.push(`/mechanic/${id}`);
     });
   }
 

@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 
 import '../Mechanic/Mechanic.css';
 
-import firebase from '../../database/firebase';
+import db from '../../database/firebase';
 
 
 function TabContainer(props) {
@@ -37,24 +37,10 @@ class Mechanic extends Component {
 	};
 
 	componentDidMount() {
-
-		// GET /places/{:id}.json
-
 		const id = this.props.match.params.id;
-		fetch(`https://jfdzl2-motoondo-2.firebaseio.com/places/${id}.json`)
-		.then(response => response.json())
-		.then(data => {
-			this.setState({ mechanic: data });
-		})
-
-		// firebase.database.collection("brands").get().then(function (querySnapshot) {
-		// 	querySnapshot.forEach(function (doc) {
-		// 		// doc.data() is never undefined for query doc snapshots
-		// 		console.log(doc.id, " => ", doc.data());
-		// 	});
-		// });
-
-
+		db.ref(`places/${id}`).on('value', snapshot => {
+			this.setState({ mechanic: snapshot.val() });
+		});
 	}
 
 	render() {

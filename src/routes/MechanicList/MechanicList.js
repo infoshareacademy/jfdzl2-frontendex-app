@@ -9,17 +9,17 @@ import { Link } from 'react-router-dom'
 import Icon from '@material-ui/core/Icon';
 import { Maps } from '@material-ui/icons';
 
+import db from '../../database/firebase';
+
 class MechanicList extends React.Component {
 	state = {
 		mechanics: []
 	}
 
 	componentDidMount() {
-		fetch('https://jfdzl2-motoondo-2.firebaseio.com/places.json')
-		.then(response => response.json())
-		.then(data => {
+		db.ref('/places').on('value', snapshot => {
 			const places = [];
-			Object.entries(data).forEach(elem => {
+			Object.entries(snapshot.val()).forEach(elem => {
 				const place = {
 					id: elem[0],
 					...elem[1]
