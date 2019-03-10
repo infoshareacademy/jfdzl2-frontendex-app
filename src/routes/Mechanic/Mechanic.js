@@ -43,7 +43,9 @@ class Mechanic extends Component {
 		const id = this.props.match.params.id;
 		db.ref(`places/${id}`).on('value', snapshot => {
 			this.setState({ mechanic: snapshot.val() });
+			console.log(snapshot.val())
 		});
+
 	}
 
 	render() {
@@ -52,8 +54,7 @@ class Mechanic extends Component {
 
 		const mapStyles = {
 			width: '100%',
-			height: '650px',
-			border: '2px solid red'
+			height: '650px'
 		}
 
 		return (
@@ -81,9 +82,20 @@ class Mechanic extends Component {
 					<TabContainer >
 
 						<div style={mapStyles}>
-							<Map google={this.props.google} zoom={14}>
+							<Map
+								google={this.props.google}
+								zoom={18}
+								initialCenter={{
+									lat: 51.2503143,
+									lng: 22.570589
+								}}>
 								<Marker onClick={this.onMarkerClick}
-									name={'Current location'} />
+									name={'Current location'}
+									title={'The marker`s title will appear as a tooltip.'}
+									name={'SOMA'}
+									position={{ lat: 51.2503143, lng: 22.570589 }} />
+
+								/>
 
 								<InfoWindow onClose={this.onInfoWindowClose}>
 									<div>
