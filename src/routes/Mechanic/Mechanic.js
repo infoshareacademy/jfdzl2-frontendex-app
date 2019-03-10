@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import _ from 'lodash';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -8,9 +8,13 @@ import SwipeableViews from 'react-swipeable-views';
 
 import Typography from '@material-ui/core/Typography';
 
+import { mechanics } from '../../database/Database';
+
 import '../Mechanic/Mechanic.css';
 
 import db from '../../database/firebase';
+
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 
 function TabContainer(props) {
@@ -24,7 +28,6 @@ function TabContainer(props) {
 TabContainer.propTypes = {
 	children: PropTypes.node.isRequired,
 };
-
 
 class Mechanic extends Component {
 	state = {
@@ -40,12 +43,24 @@ class Mechanic extends Component {
 		const id = this.props.match.params.id;
 		db.ref(`places/${id}`).on('value', snapshot => {
 			this.setState({ mechanic: snapshot.val() });
+			console.log(snapshot.val())
 		});
 	}
 
 	render() {
 		const { classes } = this.props;
 		const { value, mechanic } = this.state;
+
+		const mapStyles = {
+			width: '100%',
+			height: '650px'
+		}
+		let splitCordinate = [0, 0];
+
+		if (mechanic.coordinates) {
+			splitCordinate = mechanic.coordinates.split(", ");
+		}
+
 
 		return (
 			<React.Fragment>
@@ -69,7 +84,31 @@ class Mechanic extends Component {
 					onChangeIndex={this.handleChangeIndex}
 				>
 					<TabContainer> Usługi </TabContainer>
-					<TabContainer> Lokalizacja </TabContainer>
+					<TabContainer >
+
+						<div style={mapStyles}>
+							<Map
+								google={this.props.google}
+								zoom={18}
+								center={{
+									lat: splitCordinate[0],
+									lng: splitCordinate[1]
+								}}>
+								<Marker onClick={this.onMarkerClick}
+									name={'Current location'}
+									title={'The marker`s title will appear as a tooltip.'}
+									name={'SOMA'}
+									position={{ lat: splitCordinate[0], lng: splitCordinate[1] }}
+								/>
+
+								<InfoWindow onClose={this.onInfoWindowClose}>
+									<div>
+									</div>
+								</InfoWindow>
+							</Map>
+						</div>
+
+					</TabContainer>
 					<TabContainer> Ocena </TabContainer>
 
 				</SwipeableViews>
@@ -80,4 +119,7 @@ class Mechanic extends Component {
 	}
 }
 
-export default Mechanic;
+export default GoogleApiWrapper({
+	apiKey: ("AIzaSyB_amRKdoVSbdFmSNB9wHW79fCRirU4h24")
+})(Mechanic)
+
