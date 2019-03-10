@@ -8,8 +8,12 @@ import TableHead from '@material-ui/core/TableHead';
 import { Link } from 'react-router-dom'
 import Icon from '@material-ui/core/Icon';
 import { Maps } from '@material-ui/icons';
+import { withStyles } from '@material-ui/core/styles';
 
 import db from '../../database/firebase';
+import './MechanicList.css'
+
+
 
 class MechanicList extends React.Component {
 	state = {
@@ -36,13 +40,14 @@ class MechanicList extends React.Component {
 		const { mechanics } = this.state;
 
 		return (
-			<div>
+			<div className="table-container">
 				<Table>
 					<TableHead>
 						<TableRow >
-							<TableCell>nazwa</TableCell>
-							<TableCell>ulica</TableCell>
-							<TableCell>miasto</TableCell>
+							<TableCell>NAZWA</TableCell>
+							<TableCell>ULICA</TableCell>
+							<TableCell>MIASTO</TableCell>
+							<TableCell></TableCell>
 							<TableCell></TableCell>
 
 						</TableRow>
