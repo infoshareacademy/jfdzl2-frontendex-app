@@ -1,7 +1,10 @@
 import React from "react";
-import Fab from "@material-ui/core/Fab";
 import { withStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+
+import Search from '../../components/Search/Search';
+
+
 
 import "./Main.css";
 
@@ -43,27 +46,8 @@ function Main(props) {
           <div className="main-container-flex">
             <h2>Znajdź mechanika</h2>
           </div>
-          <div className="main-buttons-container">
-            <Link to="/login" className={classes.linkStyle}>
-              <Fab
-                variant="extended"
-                aria-label="Add"
-                className={classes.mainButton}
-              >
-                Zaloguj
-              </Fab>
-            </Link>
-            <Link to="/register" className={classes.linkStyle}>
-            <Fab
-              variant="extended"
-              aria-label="Add"
-              className={classes.mainButton}
-            >
-              Dołącz do nas
-            </Fab>
-            </Link>
-          </div>
         </div>
+              <Search></Search>
       </div>
     </div>
   );

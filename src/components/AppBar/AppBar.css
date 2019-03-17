@@ -3,3 +3,14 @@
     font-size: 1.5em !important;
     padding-left: 15px !important;
 }
+
+.app-bar-links {
+    margin-left: auto;
+}
+
+.app-bar-link {
+    text-decoration: none;
+    color: white;
+    margin: 10px;
+    font-size: 1.2em;
+}

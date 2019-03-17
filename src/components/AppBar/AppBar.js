@@ -26,7 +26,7 @@ const styles = theme => ({
     drawer: {
         opacity: 0.93,
     }
-    
+
 });
 
 
@@ -41,6 +41,9 @@ class ApplicationBar extends React.Component {
         this.setState({ open: !this.state.open })
     }
 
+
+
+
     render() {
         const { classes } = this.props;
         console.log('classes', classes);
@@ -51,32 +54,36 @@ class ApplicationBar extends React.Component {
                         <IconButton onClick={this.toggleDrawer} color="inherit" aria-label="Menu">
                             <MenuIcon />
                         </IconButton>
+                        <div className="app-bar-links">
+                            <Link to="/login" className="app-bar-link">ZALOGUJ</Link>
+                            <Link to="/register" className="app-bar-link">ZAREJESTRUJ</Link>
+                        </div>
 
                     </Toolbar>
                 </AppBar>
                 <Drawer open={this.state.open} onClose={this.toggleDrawer} className={classes.drawer}>
                     <List className={classes.list}>
-                        <Link to="/" onClick={this.toggleDrawer} style={{ textDecoration: 'none'}}>
+                        <Link to="/" onClick={this.toggleDrawer} style={{ textDecoration: 'none' }}>
                             <ListItem button>
-                                <ListItemText classes={{primary: 'list-item-text'}}> START</ListItemText>
+                                <ListItemText classes={{ primary: 'list-item-text' }}> START</ListItemText>
                             </ListItem>
                         </Link>
 
-                        <Link to="/stats" onClick={this.toggleDrawer} style={{ textDecoration: 'none'}}>
+                        <Link to="/mechanic-list" onClick={this.toggleDrawer} style={{ textDecoration: 'none' }}>
                             <ListItem button>
-                                <ListItemText classes={{primary: 'list-item-text'}}>Stats</ListItemText>
+                                <ListItemText classes={{ primary: 'list-item-text' }}>WARSZTATY</ListItemText>
                             </ListItem>
                         </Link>
 
-                        <Link to="/mechanic-list" onClick={this.toggleDrawer} style={{ textDecoration: 'none'}}>
+                        <Link to="/stats" onClick={this.toggleDrawer} style={{ textDecoration: 'none' }}>
                             <ListItem button>
-                                <ListItemText classes={{primary: 'list-item-text'}}>Mechanic List</ListItemText>
+                                <ListItemText classes={{ primary: 'list-item-text' }}>O APLIKACJI</ListItemText>
                             </ListItem>
                         </Link>
 
-                        <Link to="/mechanic" onClick={this.toggleDrawer} style={{ textDecoration: 'none'}}>
+                        <Link to="/mechanic" onClick={this.toggleDrawer} style={{ textDecoration: 'none' }}>
                             <ListItem button>
-                                <ListItemText classes={{primary: 'list-item-text'}}>Mechanic</ListItemText>
+                                <ListItemText classes={{ primary: 'list-item-text' }}>Mechanic</ListItemText>
                             </ListItem>
                         </Link>
 

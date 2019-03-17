@@ -1,5 +1,7 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 class Search extends React.Component {
@@ -11,38 +13,54 @@ class Search extends React.Component {
             <form>
                 <h2>Szukaj mechanika</h2>
                 <TextField
-        
-                    required
-                    id=""
-                    defaultValue="Lokalizacja"
-                    margin="normal"
-                    variant="outlined"
+
+                    id="input-with-icon-textfield"
+                    label="Szukaj wartsztatów"
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <FontAwesomeIcon icon="search" />
+                            </InputAdornment>
+                        ),
+                    }}
                 />
-                   <TextField
-                  
-                    required
-                    id=""
-                    defaultValue="Nazwa firmy"
-                    margin="normal"
-                    variant="outlined"
+                <TextField
+
+                    id="input-with-icon-textfield"
+                    label="Szukaj wartsztatów"
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <FontAwesomeIcon icon="search" />
+                            </InputAdornment>
+                        ),
+                    }}
                 />
-                   <TextField
-                   
-                    required
-                    id=""
-                    defaultValue="Specjalizacja"
-                    margin="normal"
-                    variant="outlined"
+                <TextField
+
+                    id="input-with-icon-textfield"
+                    label="Szukaj wartsztatów"
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <FontAwesomeIcon icon="search" />
+                            </InputAdornment>
+                        ),
+                    }}
                 />
-                   <TextField
-                 
-                    required
-                    id=""
-                    defaultValue="Marka samochodu"
-                    margin="normal"
-                    variant="outlined"
+                <TextField
+
+                    id="input-with-icon-textfield"
+                    label="Szukaj wartsztatów"
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <FontAwesomeIcon icon="search" />
+                            </InputAdornment>
+                        ),
+                    }}
                 />
-              
+
             </form>
 
 
