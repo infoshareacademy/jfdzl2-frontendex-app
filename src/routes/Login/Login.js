@@ -3,6 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Fab from "@material-ui/core/Fab";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { auth } from '';
 
 import "./Login.css";
 
@@ -41,6 +42,15 @@ class Login extends React.Component {
     password: ""
   };
 
+
+  handleChange = (e) => {
+    this.setState({ [e.target.id]: e.target.value })
+    console.log('change')
+  }
+  handleSubmit = () => {
+    console.log('handlesubmit')
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -58,6 +68,8 @@ class Login extends React.Component {
                 placeholder="Login"
                 margin="normal"
                 className={classes.textField}
+                onChange={this.handleChange}
+                value={this.state.login}
               />
             </div>
             <div className="login-container-flex">
@@ -66,15 +78,18 @@ class Login extends React.Component {
                 id="password"
                 label="Password"
                 type="password"
-                placeholder="Hasło"
+                placeholder="Password"
                 margin="normal"
                 className={classes.textField}
+                onChange={this.handleChange}
+                value={this.state.password}
               />
             </div>
             <Fab
               variant="extended"
               aria-label="Add"
               className={classes.loginButton}
+              onClick={this.handleSubmit}
             >
               Zaloguj
             </Fab>
