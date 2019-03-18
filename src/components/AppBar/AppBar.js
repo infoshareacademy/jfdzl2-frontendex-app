@@ -41,9 +41,6 @@ class ApplicationBar extends React.Component {
         this.setState({ open: !this.state.open })
     }
 
-
-
-
     render() {
         const { classes } = this.props;
         console.log('classes', classes);
