@@ -43,9 +43,6 @@ function Main(props) {
           <div className="main-title-container">
             <h1 className="main-app-name">Motoondo</h1>
           </div>
-          <div className="main-container-flex">
-            <h2>Znajdź mechanika</h2>
-          </div>
         </div>
               <Search></Search>
       </div>
