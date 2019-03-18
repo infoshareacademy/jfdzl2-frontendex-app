@@ -8,7 +8,8 @@ import "./Search.css";
 
 const styles = theme => ({
   searchTextField: {
-   
+   marginLeft: "2%",
+   marginRight: "2%",
     [theme.breakpoints.up("sm")]: {
       
     }
@@ -23,6 +24,7 @@ class Search extends React.Component {
         <div className="container-flex">
           <h2>Szukaj mechanika</h2>
         </div>
+        <div className="search-fields-container">
         <TextField className={classes.searchTextField}
           id="input-with-icon-textfield"
           label="Nazwa warsztatu"
@@ -56,6 +58,7 @@ class Search extends React.Component {
             )
           }}
         />
+        </div> 
       </form>
     );
   }

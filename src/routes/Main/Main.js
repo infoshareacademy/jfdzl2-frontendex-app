@@ -39,12 +39,12 @@ function Main(props) {
     <div className="main-container main-container-flex">
       <div className="main-content">
         <div className="main-logo-container" />
-        <div className="main-description-container">
           <div className="main-title-container">
             <h1 className="main-app-name">Motoondo</h1>
           </div>
-        </div>
-              <Search></Search>
+      </div>
+      <div className="form-container">
+      <Search></Search>
       </div>
     </div>
   );
