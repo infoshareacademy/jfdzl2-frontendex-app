@@ -43,7 +43,6 @@ class ApplicationBar extends React.Component {
 
     render() {
         const { classes } = this.props;
-        console.log('classes', classes);
         return (
             <React.Fragment>
                 <AppBar position="fixed" className={classes.appBar}>

@@ -10,9 +10,6 @@ const styles = theme => ({
   searchTextField: {
    marginLeft: "2%",
    marginRight: "2%",
-    [theme.breakpoints.up("sm")]: {
-      
-    }
   }
 });
 
@@ -31,18 +28,18 @@ class Search extends React.Component {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <FontAwesomeIcon icon="search" />
+                <FontAwesomeIcon icon="search" className='search-icon'/>
               </InputAdornment>
             )
           }}
         />
-        <TextField className={classes.searchTextField}
+        <TextField className={classes.searchTextField} 
           id="input-with-icon-textfield"
           label="Lokalizacja"
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <FontAwesomeIcon icon="search" />
+                <FontAwesomeIcon icon="search" className='search-icon' />
               </InputAdornment>
             )
           }}
@@ -53,7 +50,7 @@ class Search extends React.Component {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <FontAwesomeIcon icon="search" />
+                <FontAwesomeIcon icon="search" className='search-icon'/>
               </InputAdornment>
             )
           }}

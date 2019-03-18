@@ -10,6 +10,14 @@
     justify-content: center;
 }
 
+h2 {
+  color: white;
+}
+
+.search-icon {
+  color: rgba(0, 0, 0, 0.54);
+}
+
 @media (max-width: 350px) {
     h2 {
       font-size: 1em;
