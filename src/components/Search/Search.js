@@ -10,6 +10,12 @@ const styles = theme => ({
   searchTextField: {
    marginLeft: "2%",
    marginRight: "2%",
+  },
+  input: {
+    color: 'white'
+  },
+  inputFocused: {
+    color: 'white !important'
   }
 });
 
@@ -24,8 +30,12 @@ class Search extends React.Component {
         <div className="search-fields-container">
         <TextField className={classes.searchTextField}
           id="input-with-icon-textfield"
-          label="Nazwa warsztatu"
+          label="Nazwa warsztatu"  
           InputProps={{
+            className: classes.input,
+            classes: {
+              focused: classes.inputFocused
+            },
             startAdornment: (
               <InputAdornment position="start">
                 <FontAwesomeIcon icon="search" className='search-icon'/>
@@ -37,6 +47,10 @@ class Search extends React.Component {
           id="input-with-icon-textfield"
           label="Lokalizacja"
           InputProps={{
+            className: classes.input,
+            classes: {
+              focused: classes.inputFocused
+            },
             startAdornment: (
               <InputAdornment position="start">
                 <FontAwesomeIcon icon="search" className='search-icon' />
@@ -48,6 +62,10 @@ class Search extends React.Component {
           id="input-with-icon-textfield"
           label="Zakres usług"
           InputProps={{
+            className: classes.input,
+            classes: {
+              focused: classes.inputFocused
+            },
             startAdornment: (
               <InputAdornment position="start">
                 <FontAwesomeIcon icon="search" className='search-icon'/>
