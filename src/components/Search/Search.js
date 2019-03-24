@@ -1,53 +1,85 @@
-import React from 'react';
-import TextField from '@material-ui/core/TextField';
+import React from "react";
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { withStyles } from "@material-ui/core/styles";
+import IconButton from '@material-ui/core/IconButton';
+import SearchIcon from '@material-ui/icons/Search';
 
+import "./Search.css";
+
+const styles = theme => ({
+  searchTextField: {
+   marginLeft: "2%",
+   marginRight: "2%",
+  },
+  input: {
+    color: 'white'
+  },
+  inputFocused: {
+    color: 'white !important'
+  }
+});
 
 class Search extends React.Component {
-
-    render() {
-
-        return (
-
-            <form>
-                <h2>Szukaj mechanika</h2>
-                <TextField
-        
-                    required
-                    id=""
-                    defaultValue="Lokalizacja"
-                    margin="normal"
-                    variant="outlined"
-                />
-                   <TextField
-                  
-                    required
-                    id=""
-                    defaultValue="Nazwa firmy"
-                    margin="normal"
-                    variant="outlined"
-                />
-                   <TextField
-                   
-                    required
-                    id=""
-                    defaultValue="Specjalizacja"
-                    margin="normal"
-                    variant="outlined"
-                />
-                   <TextField
-                 
-                    required
-                    id=""
-                    defaultValue="Marka samochodu"
-                    margin="normal"
-                    variant="outlined"
-                />
-              
-            </form>
-
-
-        )
-    }
+  render() {
+    const { classes } = this.props;
+    return (
+      <form>
+        <div className="container-flex">
+          <h2>Szukaj mechanika</h2>
+        </div>
+        <div className="search-fields-container">
+        <TextField className={classes.searchTextField}
+          id="input-with-icon-textfield"
+          label="Nazwa warsztatu"  
+          InputProps={{
+            className: classes.input,
+            classes: {
+              focused: classes.inputFocused
+            },
+            startAdornment: (
+              <InputAdornment position="start">
+                <FontAwesomeIcon icon="search" className='search-icon'/>
+              </InputAdornment>
+            )
+          }}
+        />
+        <TextField className={classes.searchTextField} 
+          id="input-with-icon-textfield"
+          label="Lokalizacja"
+          InputProps={{
+            className: classes.input,
+            classes: {
+              focused: classes.inputFocused
+            },
+            startAdornment: (
+              <InputAdornment position="start">
+                <FontAwesomeIcon icon="search" className='search-icon' />
+              </InputAdornment>
+            )
+          }}
+        />
+        <TextField className={classes.searchTextField}
+          id="input-with-icon-textfield"
+          label="Zakres usług"
+          InputProps={{
+            className: classes.input,
+            classes: {
+              focused: classes.inputFocused
+            },
+            startAdornment: (
+              <InputAdornment position="start">
+                <FontAwesomeIcon icon="search" className='search-icon'/>
+              </InputAdornment>
+            )
+          }}
+        />
+        </div> 
+      <IconButton><SearchIcon/>Search</IconButton>
+      </form>
+    );
+  }
 }
 
-export default Search;
+export default withStyles(styles)(Search);

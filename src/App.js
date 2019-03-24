@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import {faLock} from '@fortawesome/free-solid-svg-icons';
+import {faSearch} from '@fortawesome/free-solid-svg-icons';
+
 
 import Main from './routes/Main/Main';
 import ApplicationBar from './components/AppBar/AppBar';
@@ -16,7 +18,7 @@ import MechanicEdit from './routes/Mechanic/MechanicEdit';
 
 library.add(faUser)
 library.add(faLock)
-
+library.add(faSearch)
 
 
 class App extends Component {
