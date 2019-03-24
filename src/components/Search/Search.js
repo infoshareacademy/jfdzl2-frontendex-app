@@ -3,6 +3,8 @@ import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { withStyles } from "@material-ui/core/styles";
+import IconButton from '@material-ui/core/IconButton';
+import SearchIcon from '@material-ui/icons/Search';
 
 import "./Search.css";
 
@@ -74,6 +76,7 @@ class Search extends React.Component {
           }}
         />
         </div> 
+      <IconButton><SearchIcon/>Search</IconButton>
       </form>
     );
   }
