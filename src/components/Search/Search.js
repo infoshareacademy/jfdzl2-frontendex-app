@@ -7,7 +7,6 @@ import { withStyles } from "@material-ui/core/styles";
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import { filter } from 'lodash';
-import db from '../../database/firebase';
 import { setPlaces } from '../../store/actions/places';
 
 
@@ -83,7 +82,6 @@ class Search extends React.Component {
            <TextField
           id="services"
           select
-          label="services"
           SelectProps={{
             native: true,
             MenuProps: {
@@ -92,10 +90,11 @@ class Search extends React.Component {
           }}
           margin="normal"
         >
-            <option key="services" value="services">
-              jakaś usługa
-            </option>
-  
+        {this.props.services.map( service => 
+          <option key={service.id} value={service.id}>
+          {service.name}
+        </option>
+        )}
         </TextField>
         </div>
         <IconButton
