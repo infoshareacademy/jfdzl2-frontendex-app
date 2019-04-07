@@ -17,6 +17,7 @@ import Login from './routes/Login/Login';
 import Register from './routes/Register/Register';
 import MechanicEdit from './routes/Mechanic/MechanicEdit';
 import { setServices } from './store/actions/services';
+import { setBrands } from './store/actions/brands';
 import db from './database/firebase';
 
 
@@ -41,7 +42,21 @@ class App extends Component {
 
 			this.props.setServices(services);
 
-		});
+    });
+    
+    db.ref('/brands').on('value', snapshot => {
+			const brands = [];
+			Object.entries(snapshot.val()).forEach(elem => {
+				const brand = {
+					id: elem[0],
+					...elem[1]
+				}
+				brands.push(brand);
+			});
+
+			this.props.setBrands(brands);
+
+    });
 	}
 
 
@@ -72,7 +87,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  setServices: (services) => dispatch(setServices(services))
+  setServices: (services) => dispatch(setServices(services)),
+  setBrands: (brands) => dispatch(setBrands(brands))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -80,6 +80,23 @@ class Search extends React.Component {
             }}
           />
            <TextField
+          id="brands"
+          select
+          SelectProps={{
+            native: true,
+            MenuProps: {
+              className: classes.menu,
+            },
+          }}
+          margin="normal"
+        >
+        {this.props.brands.map( brand => 
+          <option key={brand.id} value={brand.id}>
+          {brand.name}
+        </option>
+        )}
+        </TextField>
+           <TextField
           id="services"
           select
           SelectProps={{
@@ -105,6 +122,7 @@ class Search extends React.Component {
           Search
         </IconButton>
       </form>
+      
     );
   }
 }
@@ -112,7 +130,8 @@ class Search extends React.Component {
 const mapStateToProps = (state) => {
   return {
     places: state.places,
-    services: state.services
+    services: state.services,
+    brands: state.brands
   }
 }
 
