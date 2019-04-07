@@ -40,7 +40,7 @@ class Register extends React.Component {
   state = {
     name: "",
     lastName: "",
-    login:""
+    login: ""
   };
 
   render() {
@@ -54,46 +54,29 @@ class Register extends React.Component {
             </div>
             <div className="register-container-flex">
               <TextField
-                id="name"
-                label="Imię"
-                placeholder="Imię"
-                margin="normal"
-                className={classes.textField}
-              />
-            </div>
-            <div className="register-container-flex">
-              <TextField
-                id="lastName"
-                label="Nazwisko"
-                placeholder="Nazwisko"
-                margin="normal"
-                className={classes.textField}
-              />
-            </div>
-            <div className="register-container-flex">
-              <TextField
-                id="location"
-                label="Miasto"
-                placeholder="Miasto"
-                margin="normal"
-                className={classes.textField}
-              />
-            </div>
-            <div className="register-container-flex">
-              <TextField
-                id="mail"
+                id="email"
                 label="E-mail"
                 placeholder="E-mail"
                 margin="normal"
-                type="e-mail"
+                type="email"
                 className={classes.textField}
               />
             </div>
             <div className="register-container-flex">
               <TextField
-                id="Last name"
+                id="password"
                 label="Hasło"
                 placeholder="Hasło"
+                type="password"
+                margin="normal"
+                className={classes.textField}
+              />
+            </div>
+            <div className="register-container-flex">
+              <TextField
+                id="password-check"
+                label="Powtórz Hasło"
+                placeholder="Powtórz Hasło"
                 type="password"
                 margin="normal"
                 className={classes.textField}
