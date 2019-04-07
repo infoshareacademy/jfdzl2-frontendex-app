@@ -39,7 +39,7 @@ class Search extends React.Component {
 
 
   render() {
-    const { classes } = this.props;
+    const { classes, services, brands} = this.props;
     console.log('places', this.props.places);
     return (
       <form onSubmit={this.handleSubmit}>
@@ -90,7 +90,7 @@ class Search extends React.Component {
           }}
           margin="normal"
         >
-        {this.props.brands.map( brand => 
+        {brands.length && brands.map( brand => 
           <option key={brand.id} value={brand.id}>
           {brand.name}
         </option>
@@ -107,7 +107,7 @@ class Search extends React.Component {
           }}
           margin="normal"
         >
-        {this.props.services.map( service => 
+        {services.length && services.map( service => 
           <option key={service.id} value={service.id}>
           {service.name}
         </option>
