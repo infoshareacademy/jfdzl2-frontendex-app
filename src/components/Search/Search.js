@@ -7,8 +7,8 @@ import { withStyles } from "@material-ui/core/styles";
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import { filter } from 'lodash';
-import db from '../../database/firebase';
 import { setPlaces } from '../../store/actions/places';
+
 
 import "./Search.css";
 
@@ -30,32 +30,9 @@ class Search extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    this.props.setPlaces([1,2,3,4])
-
     console.log('submit');
 
-    //zapytanie do bazy po liste mechnaikow 
-
-    // db.ref('/places').on('value', snapshot => {
-    //   const places = [];
-    //   Object.entries(snapshot.val()).forEach(elem => {
-    //     const place = {
-    //       id: elem[0],
-    //       ...elem[1]
-    //     }
-    //     places.push(place);
-    //   });
-
-
-    //po odpowiedzi korzystamy z metody filter (lodash, js) aby przefiltrowac wyniki na podstawie state'a komponentu  
-
-
-    //wywolaniee akcji setMechanics
-
-    //przekierowanie na sciezke /mechanics
-    // });
-
-
+   
 
 
   }
@@ -72,6 +49,7 @@ class Search extends React.Component {
         <div className="search-fields-container">
           <TextField className={classes.searchTextField}
             id="input-with-icon-textfield"
+            name='name'
             label="Nazwa warsztatu"
             InputProps={{
               className: classes.input,
@@ -88,6 +66,7 @@ class Search extends React.Component {
           <TextField className={classes.searchTextField}
             id="input-with-icon-textfield"
             label="Lokalizacja"
+            name='location'
             InputProps={{
               className: classes.input,
               classes: {
@@ -100,21 +79,40 @@ class Search extends React.Component {
               )
             }}
           />
-          <TextField className={classes.searchTextField}
-            id="input-with-icon-textfield"
-            label="Zakres usług"
-            InputProps={{
-              className: classes.input,
-              classes: {
-                focused: classes.inputFocused
-              },
-              startAdornment: (
-                <InputAdornment position="start">
-                  <FontAwesomeIcon icon="search" className='search-icon' />
-                </InputAdornment>
-              )
-            }}
-          />
+           <TextField
+          id="brands"
+          select
+          SelectProps={{
+            native: true,
+            MenuProps: {
+              className: classes.menu,
+            },
+          }}
+          margin="normal"
+        >
+        {this.props.brands.map( brand => 
+          <option key={brand.id} value={brand.id}>
+          {brand.name}
+        </option>
+        )}
+        </TextField>
+           <TextField
+          id="services"
+          select
+          SelectProps={{
+            native: true,
+            MenuProps: {
+              className: classes.menu,
+            },
+          }}
+          margin="normal"
+        >
+        {this.props.services.map( service => 
+          <option key={service.id} value={service.id}>
+          {service.name}
+        </option>
+        )}
+        </TextField>
         </div>
         <IconButton
           type='submit'
@@ -124,13 +122,16 @@ class Search extends React.Component {
           Search
         </IconButton>
       </form>
+      
     );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    places: state.places
+    places: state.places,
+    services: state.services,
+    brands: state.brands
   }
 }
 

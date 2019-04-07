@@ -4,6 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import {faLock} from '@fortawesome/free-solid-svg-icons';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
+import { connect } from 'react-redux';
 
 
 import Main from './routes/Main/Main';
@@ -15,6 +16,10 @@ import MechanicList from './routes/MechanicList/MechanicList';
 import Login from './routes/Login/Login';
 import Register from './routes/Register/Register';
 import MechanicEdit from './routes/Mechanic/MechanicEdit';
+import { setServices } from './store/actions/services';
+import { setBrands } from './store/actions/brands';
+import db from './database/firebase';
+
 
 library.add(faUser)
 library.add(faLock)
@@ -22,6 +27,39 @@ library.add(faSearch)
 
 
 class App extends Component {
+
+  componentDidMount() {
+
+		db.ref('/services').on('value', snapshot => {
+			const services = [];
+			Object.entries(snapshot.val()).forEach(elem => {
+				const service = {
+					id: elem[0],
+					...elem[1]
+				}
+				services.push(service);
+			});
+
+			this.props.setServices(services);
+
+    });
+    
+    db.ref('/brands').on('value', snapshot => {
+			const brands = [];
+			Object.entries(snapshot.val()).forEach(elem => {
+				const brand = {
+					id: elem[0],
+					...elem[1]
+				}
+				brands.push(brand);
+			});
+
+			this.props.setBrands(brands);
+
+    });
+	}
+
+
   render() {
     return (
       <Router>
@@ -44,4 +82,13 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  services: state.services
+})
+
+const mapDispatchToProps = dispatch => ({
+  setServices: (services) => dispatch(setServices(services)),
+  setBrands: (brands) => dispatch(setBrands(brands))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
