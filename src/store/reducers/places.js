@@ -1,6 +1,8 @@
 import { SET_PLACES } from "../constants";
 
-const places = (state = ['asd', 'test'], action) => {
+const initialState = []
+
+const places = (state = initialState, action) => {
 
     switch (action.type) {
         case SET_PLACES:
