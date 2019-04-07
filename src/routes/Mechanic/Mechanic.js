@@ -33,6 +33,8 @@ class Mechanic extends Component {
 	state = {
 		value: 0,
 		mechanic: {},
+		rating: 0,
+		text: ''
 	};
 
 	handleChange = (event, value) => {
@@ -45,6 +47,58 @@ class Mechanic extends Component {
 			this.setState({ mechanic: snapshot.val() });
 			console.log(snapshot.val())
 		});
+	}
+
+	getNewRating = () => {
+		const { mechanic, rating } = this.state;
+		if (mechanic.rating) {
+			const newRating = parseInt(mechanic.rating) + parseInt(rating);
+			return newRating;
+		} else {
+			return rating;
+		}
+	}
+
+	getRatingCount = () => {
+		const { mechanic } = this.state;
+
+		if (mechanic.ratingCount) {
+			let newRatingCount = parseInt(mechanic.ratingCount) + 1;
+			return newRatingCount;
+		} else {
+			return 1;
+		}
+	}
+
+	handleSubmitRating = (e) => {
+		e.preventDefault();
+		console.log(this.state.rating)
+		const id = this.props.match.params.id;
+		const { mechanic } = this.state;
+
+
+		db.ref(`/places/${id}`).set({
+			...mechanic,
+			rating: this.getNewRating(),
+			ratingCount: this.getRatingCount()
+		});
+	}
+
+	handleChangeRating = (e) => {
+		e.preventDefault();
+
+		this.setState({
+			rating: e.target.value
+		})
+	}
+
+	getAverage = () => {
+		const { mechanic } = this.state;
+		if(mechanic.rating){
+			return `${mechanic.rating / mechanic.ratingCount}/5`
+		}else{
+			return ''
+		}
 	}
 
 	render() {
@@ -61,11 +115,11 @@ class Mechanic extends Component {
 			splitCordinate = mechanic.coordinates.split(", ");
 		}
 
-
 		return (
 			<React.Fragment>
 				<h1 className="mechanic__header"> {mechanic.name} </h1>
 				<p>{mechanic.street}, {mechanic.city}</p>
+				<p>ocena: {this.getAverage()}</p>
 
 				<AppBar position="static">
 					<Tabs
@@ -109,7 +163,13 @@ class Mechanic extends Component {
 						</div>
 
 					</TabContainer>
-					<TabContainer> Ocena </TabContainer>
+					<TabContainer>
+						<form onSubmit={this.handleSubmitRating}>
+							<input type="number" max="5" min="1" name="rating" onChange={this.handleChangeRating} />
+							{/* <input type="text" placeholder="Tekst dla przykładu"/> */}
+							<input type="submit" value="Dodaj ocenę" />
+						</form>
+					</TabContainer>
 
 				</SwipeableViews>
 
