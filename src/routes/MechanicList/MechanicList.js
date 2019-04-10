@@ -1,7 +1,6 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import ButtonBase from '@material-ui/core/ButtonBase';
 import { Link } from 'react-router-dom'
 import db from '../../database/firebase';
 import Typography from '@material-ui/core/Typography';
@@ -9,15 +8,18 @@ import Divider from '@material-ui/core/Divider';
 
 import './MechanicList.css'
 
+import { connect } from 'react-redux';
+import { setPlaces } from '../../store/actions/places';
+import { setServices } from '../../store/actions/services';
+import { setBrands } from '../../store/actions/brands';
 
 class MechanicList extends React.Component {
-	state = {
-		mechanics: [],
-		services: [],
-		brands: []
-	}
+
 
 	componentDidMount() {
+
+		const { filters } = this.props;
+
 		db.ref('/places').on('value', snapshot => {
 			const places = [];
 			Object.entries(snapshot.val()).forEach(elem => {
@@ -27,10 +29,27 @@ class MechanicList extends React.Component {
 				}
 				places.push(place);
 			});
-			this.setState({
-				mechanics: places
-			})
+
+			if (filters) {
+				//wykonaj filtorwanie
+			}
+
+			this.props.setPlaces(places);
+
 		});
+		db.ref('//services').on('value', snapshot => {
+			const services = [];
+			Object.entries(snapshot.val()).forEach(elem => {
+				const service = {
+					id: elem[0],
+					...elem[1]
+				}
+				services.push(service);
+			});
+
+			this.props.setServices(services);
+		})
+
 
 		db.ref('/brands').on('value', snapshot => {
 			const brands = [];
@@ -41,46 +60,54 @@ class MechanicList extends React.Component {
 				}
 				brands.push(brand);
 			});
-			this.setState({
-				brands
-			})
-		});
+
+			this.props.setBrands(brands);
+		})
 	}
 
-	render() {
-		const { mechanics, services, brands } = this.state;
-		console.log(brands);
+	renderLoader = () => {
+		return (
+			<div style={{ paddingTop: '60px' }}>
+				Ładowanie
+			</div>
+		)
+	}
+
+
+
+	renderPlaces = () => {
+		const { places, brands, services } = this.props;
 		return (
 
 			<div className="grid-container">
 				<Grid container spacing={16} >
-				
+
 					<Grid item xs={8} direction="row">
-						{mechanics && mechanics.map((mechanic) => {
+						{places && places.map((place) => {
 
 							return (
 
 								<Grid container spacing={24} direction="column">
-									<Grid item xs={12} key={`mechanic-${mechanic.id}`}>
-										<Link to={`/mechanic/${mechanic.id}`}>
+									<Grid item xs={12} key={`place-${place.id}`}>
+										<Link to={`/place/${place.id}`}>
 
-											<Paper className={`tile ${mechanic.status}`}>
+											<Paper className={`tile ${place.status}`}>
 												<Grid container direction="row" className="container-title">
-													<Grid item xs={8} >{mechanic.name}</Grid>
+													<Grid item xs={8} >{place.name}</Grid>
 													<Grid item xs={4} >RATING HERE </Grid>
 												</Grid>
 												<Divider />
 												<Grid container direction="row" className="container-main">
 													<Grid item xs={12} >
 
-														<Typography >{mechanic.city}>>{mechanic.street} <Divider /></Typography>
-														<Typography > {mechanic.brands.map((value) => {
+														<Typography >{place.city}>>{place.street} <Divider /></Typography>
+														<Typography > {place.services.map((value) => {
 
-															if (brands.length) {
-																const brand = brands[value - 1];
-																if (brand) {
-																	console.log(brand.name);
-																	return brand.name + ' ';
+															if (services.length) {
+																const service = services[value - 1];
+																if (service) {
+																	console.log(service.name);
+																	return service.name + '>> ';
 																} else {
 																	return ''
 																}
@@ -88,7 +115,8 @@ class MechanicList extends React.Component {
 
 															}
 														})}
-															<Divider /></Typography>
+															<Divider />
+														</Typography>
 													</Grid>
 
 												</Grid>
@@ -103,7 +131,7 @@ class MechanicList extends React.Component {
 
 					<Grid item xs={4}>
 						lorem ipsum
-				{/* {services && services.map((service) => {
+						{/* {services && services.map((service) => {
 							return (
 								{ service.name }
 							)
@@ -115,6 +143,29 @@ class MechanicList extends React.Component {
 		)
 
 	}
+
+	render() {
+		const { places } = this.props;
+
+		return (
+			<>
+				{places.length && this.renderPlaces()}
+				{!places.length && this.renderLoader()}
+			</>
+		)
+	}
 }
 
-export default MechanicList;
+const mapStateToProps = state => ({
+	places: state.places,
+	filters: state.filters,
+	brands: state.brands,
+	services: state.services
+});
+
+const mapDispatchToProps = {
+	setPlaces, setBrands, setServices
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MechanicList);
+
