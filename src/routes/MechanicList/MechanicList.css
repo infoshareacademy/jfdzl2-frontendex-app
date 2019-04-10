@@ -34,8 +34,15 @@
 .container-main {
     padding: 2%;
     text-decoration: none !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
 }
 
 .premium {
     border-color: black solid !important;
+}
+.premium::before {
+    content: 'https://image.flaticon.com/icons/svg/1654/1654429.svg' !important
 }

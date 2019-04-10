@@ -97,26 +97,28 @@ class MechanicList extends React.Component {
 													<Grid item xs={4} >RATING HERE </Grid>
 												</Grid>
 												<Divider />
-												<Grid container direction="row" className="container-main">
+												<Grid container direction="row" >
+
 													<Grid item xs={12} >
+														<div className="container-main" >
+															<Typography >{place.city}>>{place.street} <Divider /></Typography>
+															<Typography > {place.services.map((value) => {
 
-														<Typography >{place.city}>>{place.street} <Divider /></Typography>
-														<Typography > {place.services.map((value) => {
+																if (services.length) {
+																	const service = services[value - 1];
+																	if (service) {
+																		console.log(service.name);
+																		return service.name + '>> ';
+																	} else {
+																		return ''
+																	}
 
-															if (services.length) {
-																const service = services[value - 1];
-																if (service) {
-																	console.log(service.name);
-																	return service.name + '>> ';
-																} else {
-																	return ''
+
 																}
-
-
-															}
-														})}
-															<Divider />
-														</Typography>
+															})}
+																<Divider />
+															</Typography>
+														</div>
 													</Grid>
 
 												</Grid>
