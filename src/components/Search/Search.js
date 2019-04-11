@@ -6,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import { filter } from 'lodash';
 import { setPlaces } from '../../store/actions/places';
+import { setFilters } from '../../store/actions/filters';
 
 
 import "./Search.css";
@@ -32,14 +33,22 @@ const styles = theme => ({
 
 class Search extends React.Component {
 
+  state = {
+    name: null,
+    location: null,
+    specialization: null,
+    brand: null
+  }
+
   handleSubmit = (event) => {
     event.preventDefault();
-
+    this.props.setFilters(this.state);
     console.log('submit');
 
+  }
 
-
-
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value })
   }
 
 
@@ -53,6 +62,7 @@ class Search extends React.Component {
         </div>
         <div className="search-fields-container">
           <TextField fullWidth className={classes.searchTextField}
+          onChange={this.handleChange}
             id="input-with-icon-textfield"
             name='name'
             label="Nazwa warsztatu"
@@ -64,6 +74,7 @@ class Search extends React.Component {
             }}
           />
           <TextField fullWidth className={classes.searchTextField}
+            onChange={this.handleChange}
             id="input-with-icon-textfield"
             label="Lokalizacja"
             name='location'
@@ -76,6 +87,8 @@ class Search extends React.Component {
           />
           <TextField fullWidth
             className={classes.searchTextField}
+            onChange={this.handleChange}
+            name='brand'
             id="brands"
             select
             SelectProps={{
@@ -94,6 +107,8 @@ class Search extends React.Component {
           </TextField>
           <TextField fullWidth
             className={classes.searchTextField}
+            onChange={this.handleChange}
+            name='specialization'
             id="services"
             select
             SelectProps={{
@@ -111,10 +126,11 @@ class Search extends React.Component {
             )}
           </TextField>
           <IconButton
-          variant='contained'
-          size='medium'
+            variant='contained'
+            size='medium'
             type='submit'
             className={classes.iconButton}
+            onSubmit={this.handleSubmit}
           >
             <SearchIcon />
             Szukaj
@@ -135,7 +151,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-  setPlaces
+  setPlaces,
+  setFilters
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Search));
