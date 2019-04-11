@@ -3,7 +3,8 @@ import { SET_FILTERS } from "../constants";
 const initialState = {
     name: null,
     location: null,
-    specialization: null
+    specialization: null,
+    brand: null
 }
 
 const places = (state = initialState, action) => {
