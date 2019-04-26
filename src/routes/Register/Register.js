@@ -22,7 +22,7 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     color: "black",
-    width: "350px",
+    width: "100%",
     marginTop: "5px",
     marginBottom: "5px",
   },
@@ -83,7 +83,7 @@ class Register extends React.Component {
               <p>REJESTRACJA</p>
             </div>
             {errorMessage}
-            <form onSubmit={this.handleSubmit}>
+            <form className="register-form" onSubmit={this.handleSubmit}>
 
               <div className="register-container-flex">
                 <FontAwesomeIcon icon={faAt} className="login-icon" />
