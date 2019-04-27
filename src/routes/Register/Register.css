@@ -40,6 +40,11 @@
   width: 100%;
   align-items: center;
 }
+.register-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .register-container-flex {
   display: flex;
@@ -89,3 +94,5 @@
     width: 200px;
   }
 }
+
+

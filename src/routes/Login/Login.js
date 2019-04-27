@@ -5,7 +5,6 @@ import Fab from "@material-ui/core/Fab";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { auth } from '../../database/firebase';
 
-
 import "./Login.css";
 
 const styles = theme => ({
