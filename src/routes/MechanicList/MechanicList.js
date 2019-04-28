@@ -83,17 +83,17 @@ class MechanicList extends React.Component {
 				<Grid container spacing={16} >
 
 					<Grid item xs={12} direction="row">
-						{places && places.map((place) => {
+						{places && places.map((mechanic) => {
 
 							return (
 
 								<Grid container spacing={24} direction="column">
-									<Grid item xs={12} key={`place-${place.id}`}>
-										<Link className="no-decoration" to={`/place/${place.id}`}>
+									<Grid item xs={12} key={`mechanic-${mechanic.id}`}>
+										<Link className="no-decoration" to={`/mechanic/${mechanic.id}`}>
 
-											<Paper className={`tile ${place.status}`}>
+											<Paper className={`tile ${mechanic.status}`}>
 												<Grid container direction="row" className="container-title">
-													<Grid item xs={8} >{place.name}</Grid>
+													<Grid item xs={8} >{mechanic.name}</Grid>
 													<Grid item xs={4} >RATING HERE </Grid>
 												</Grid>
 												<Divider />
@@ -101,8 +101,8 @@ class MechanicList extends React.Component {
 
 													<Grid item xs={12} >
 														<div className="container-main" >
-															<Typography >{place.city}>>{place.street} <Divider /></Typography>
-															<Typography > {place.services.map((value) => {
+															<Typography >{mechanic.city}>>{mechanic.street} <Divider /></Typography>
+															<Typography > {mechanic.services.map((value) => {
 
 																if (services.length) {
 																	const service = services[value - 1];
