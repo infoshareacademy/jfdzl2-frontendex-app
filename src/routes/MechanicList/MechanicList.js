@@ -94,7 +94,7 @@ class MechanicList extends React.Component {
 											<Paper className={`tile ${mechanic.status}`}>
 												<Grid container direction="row" className="container-title">
 													<Grid item xs={8} >{mechanic.name}</Grid>
-													<Grid item xs={4} >RATING HERE </Grid>
+													
 												</Grid>
 												<Divider />
 												<Grid container direction="row" >

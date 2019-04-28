@@ -77,11 +77,6 @@ class ApplicationBar extends React.Component {
                             </ListItem>
                         </Link>
 
-                        <Link to="/mechanic" onClick={this.toggleDrawer} style={{ textDecoration: 'none' }}>
-                            <ListItem button>
-                                <ListItemText classes={{ primary: 'list-item-text' }}>Mechanic</ListItemText>
-                            </ListItem>
-                        </Link>
 
                         <ListItem button >
                             <ListItemText />
