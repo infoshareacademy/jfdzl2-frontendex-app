@@ -101,14 +101,14 @@ class MechanicList extends React.Component {
 
 													<Grid item xs={12} >
 														<div className="container-main" >
-															<Typography >{mechanic.city}>>{mechanic.street} <Divider /></Typography>
+															<Typography ><span class="mechanic-address">{mechanic.city} | {mechanic.street} </span><Divider /></Typography>
 															<Typography > {mechanic.services.map((value) => {
 
 																if (services.length) {
 																	const service = services[value - 1];
 																	if (service) {
 																		console.log(service.name);
-																		return service.name + '>> ';
+																		return service.name + ' | ';
 																	} else {
 																		return ''
 																	}
