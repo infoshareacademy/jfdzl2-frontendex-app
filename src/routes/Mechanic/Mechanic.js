@@ -45,7 +45,7 @@ class Mechanic extends Component {
 		const id = this.props.match.params.id;
 		db.ref(`places/${id}`).on('value', snapshot => {
 			this.setState({ mechanic: snapshot.val() });
-			console.log(snapshot.val())
+			// console.log(snapshot.val())
 		});
 	}
 
@@ -72,7 +72,7 @@ class Mechanic extends Component {
 
 	handleSubmitRating = (e) => {
 		e.preventDefault();
-		console.log(this.state.rating)
+		// console.log(this.state.rating)
 		const id = this.props.match.params.id;
 		const { mechanic } = this.state;
 
@@ -119,7 +119,7 @@ class Mechanic extends Component {
 			<React.Fragment>
 				<h1 className="mechanic__header"> {mechanic.name} </h1>
 				<p>{mechanic.street}, {mechanic.city}</p>
-				<p>ocena: {this.getAverage()}</p>
+				<p>ocena: {this.getAverage().slice(0,4)}</p>
 
 				<AppBar position="static">
 					<Tabs
@@ -127,7 +127,7 @@ class Mechanic extends Component {
 						onChange={this.handleChange}
 						centered
 					>
-						<Tab label="Usługi" />
+						{/* <Tab label="Usługi" /> */}
 						<Tab label="Lokalizacja" />
 						<Tab label="Ocena" />
 					</Tabs>
@@ -137,7 +137,7 @@ class Mechanic extends Component {
 					index={this.state.value}
 					onChangeIndex={this.handleChangeIndex}
 				>
-					<TabContainer> Usługi </TabContainer>
+					{/* <TabContainer> Usługi </TabContainer> */}
 					<TabContainer >
 
 						<div style={mapStyles}>
@@ -173,7 +173,6 @@ class Mechanic extends Component {
 
 				</SwipeableViews>
 
-				<div> Footer </div>
 			</React.Fragment>
 		)
 	}
