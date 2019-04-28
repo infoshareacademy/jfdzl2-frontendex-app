@@ -3,6 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Fab from "@material-ui/core/Fab";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { auth } from '../../database/firebase';
 
 import "./Login.css";
 
@@ -41,46 +42,77 @@ class Login extends React.Component {
     password: ""
   };
 
+
+  handleChange = (event) => {
+    console.log("Piszę coś")
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
+  handleSubmit = (event) => {
+    console.log("Klik")
+    auth
+      .signInWithEmailAndPassword(
+        this.state.login, this.state.password
+      )
+      .then(response => {
+        console.log('Response: ', response);
+        this.props.history.push('/');
+      })
+      .catch(error => {
+        console.error(`Error: ${error.code} ${error.message}`);
+      })
+    console.log(this.state);
+    this.setState({ login: '', password: '' });
+    event.preventDefault();
+  }
+
   render() {
     const { classes } = this.props;
     return (
       <div className="login-container-flex login-main-container">
         <div className="login-content">
-          <div className="login-form-container">
+          <div onSubmit={this.handleSubmit} className="login-form-container">
             <div className="login-form-header login-bottom-border">
               <p>LOGOWANIE</p>
             </div>
-            <div className="login-container-flex">
-              <FontAwesomeIcon icon="user" className="login-icon" />
-              <TextField
-                id="login"
-                label="Login"
-                placeholder="Login"
-                margin="normal"
-                className={classes.textField}
-              />
-            </div>
-            <div className="login-container-flex">
-              <FontAwesomeIcon icon="lock" className="login-icon" />
-              <TextField
-                id="password"
-                label="Password"
-                type="password"
-                placeholder="Hasło"
-                margin="normal"
-                className={classes.textField}
-              />
-            </div>
-            <Fab
-              variant="extended"
-              aria-label="Add"
-              className={classes.loginButton}
-            >
-              Zaloguj
-            </Fab>
-            <div className="login-password-remind">
-              <p>Przypomnij hasło</p>
-            </div>
+              <form onSubmit={this.handleSubmit}>
+                <div className="login-container-flex">
+                  <FontAwesomeIcon icon="user" className="login-icon" />
+                  <TextField
+                    onChange={this.handleChange}
+                    id="login"
+                    name="login"
+                    label="Login"
+                    placeholder="Login"
+                    margin="normal"
+                    className={classes.textField}
+                  />
+                </div>
+                <div className="login-container-flex">
+                  <FontAwesomeIcon icon="lock" className="login-icon" />
+                  <TextField
+                    onChange={this.handleChange}
+                    id="password"
+                    label="Password"
+                    name="password"
+                    type="password"
+                    placeholder="Hasło"
+                    margin="normal"
+                    className={classes.textField}
+                  />
+                </div>
+                <Fab
+                  variant="extended"
+                  type='submit'
+                  aria-label="Add"
+                  className={classes.loginButton}
+                >
+                  Zaloguj
+                </Fab>
+                <div className="login-password-remind">
+                  <p>Przypomnij hasło</p>
+                </div>
+              </form>
           </div>
         </div>
       </div>
