@@ -1,23 +1,24 @@
 import React from 'react';
-import Table from '@material-ui/core/Table';
-import TableRow from '@material-ui/core/TableRow';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import { Link } from 'react-router-dom'
-import Icon from '@material-ui/core/Icon';
+import db from '../../database/firebase';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+
+import './MechanicList.css'
 
 import { connect } from 'react-redux';
 import { setPlaces } from '../../store/actions/places';
-
-import db from '../../database/firebase';
+import { setServices } from '../../store/actions/services';
+import { setBrands } from '../../store/actions/brands';
 
 class MechanicList extends React.Component {
 
 
 	componentDidMount() {
 
-		const {filters} = this.props;
+		const { filters } = this.props;
 
 		db.ref('/places').on('value', snapshot => {
 			const places = [];
@@ -29,70 +30,111 @@ class MechanicList extends React.Component {
 				places.push(place);
 			});
 
-			if(filters){
+			if (filters) {
 				//wykonaj filtorwanie
 			}
 
 			this.props.setPlaces(places);
 
 		});
+		db.ref('//services').on('value', snapshot => {
+			const services = [];
+			Object.entries(snapshot.val()).forEach(elem => {
+				const service = {
+					id: elem[0],
+					...elem[1]
+				}
+				services.push(service);
+			});
+
+			this.props.setServices(services);
+		})
+
+
+		db.ref('/brands').on('value', snapshot => {
+			const brands = [];
+			Object.entries(snapshot.val()).forEach(elem => {
+				const brand = {
+					id: elem[0],
+					...elem[1]
+				}
+				brands.push(brand);
+			});
+
+			this.props.setBrands(brands);
+		})
 	}
 
 	renderLoader = () => {
 		return (
-			<div style={{paddingTop: '60px'}}>
+			<div style={{ paddingTop: '60px' }}>
 				Ładowanie
 			</div>
 		)
 	}
 
+
+
 	renderPlaces = () => {
-		const { places } = this.props;
+		const { places, brands, services } = this.props;
+		return (
 
-		return (<div>
-			<Table>
-				<TableHead>
-					<TableRow >
-						<TableCell>nazwa</TableCell>
-						<TableCell>ulica</TableCell>
-						<TableCell>miasto</TableCell>
-						<TableCell></TableCell>
+			<div className="grid-container">
+				<Grid container spacing={16} >
 
-					</TableRow>
-				</TableHead>
+					<Grid item xs={12} direction="row">
+						{places && places.map((mechanic) => {
 
-				<TableBody>
+							return (
 
-					{places && places.map((mechanic) => {
-						return (
+								<Grid container spacing={24} direction="column">
+									<Grid item xs={12} key={`mechanic-${mechanic.id}`}>
+										<Link className="no-decoration" to={`/mechanic/${mechanic.id}`}>
 
-							<TableRow key={`mechanic-${mechanic.id}`}>
+											<Paper className={`tile ${mechanic.status}`}>
+												<Grid container direction="row" className="container-title">
+													<Grid item xs={8} >{mechanic.name}</Grid>
+													<Grid item xs={4} >RATING HERE </Grid>
+												</Grid>
+												<Divider />
+												<Grid container direction="row" >
 
-								<TableCell >
-									{mechanic.name}
-								</TableCell>
-								<TableCell >
-									{mechanic.street}
-								</TableCell>
-								<TableCell >
-									{mechanic.city}
+													<Grid item xs={12} >
+														<div className="container-main" >
+															<Typography >{mechanic.city}>>{mechanic.street} <Divider /></Typography>
+															<Typography > {mechanic.services.map((value) => {
 
-								</TableCell>
-								<TableCell>
-									<Link to={`/mechanic/${mechanic.id}`}><Icon>directions_car</Icon> zobacz warsztat </Link>
-								</TableCell>
-								<TableCell >
-									<Link to={`/edit/${mechanic.id}`}><button>Edytuj</button></Link>
+																if (services.length) {
+																	const service = services[value - 1];
+																	if (service) {
+																		console.log(service.name);
+																		return service.name + '>> ';
+																	} else {
+																		return ''
+																	}
 
-								</TableCell>
 
-							</TableRow>)
-					})}
-				</TableBody>
+																}
+															})}
+																<Divider />
+															</Typography>
+														</div>
+													</Grid>
 
-			</Table>
-		</div>)
+												</Grid>
+											</Paper>
 
+										</Link>
+									</Grid>
+								</Grid>
+							)
+						})}
+					</Grid>
+
+				</Grid>
+
+			</div >
+		)
 
 	}
 
@@ -106,16 +148,18 @@ class MechanicList extends React.Component {
 			</>
 		)
 	}
-
 }
 
 const mapStateToProps = state => ({
 	places: state.places,
-	filters: state.filters
+	filters: state.filters,
+	brands: state.brands,
+	services: state.services
 });
 
 const mapDispatchToProps = {
-	setPlaces
+	setPlaces, setBrands, setServices
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MechanicList);
+
