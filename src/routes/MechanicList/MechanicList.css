@@ -41,8 +41,9 @@
 }
 
 .premium {
-    border-color: black solid !important;
+    border-color: black solid
 }
-.premium::before {
-    content: 'https://image.flaticon.com/icons/svg/1654/1654429.svg' !important
+
+a.no-decoration{
+    text-decoration: none !important
 }

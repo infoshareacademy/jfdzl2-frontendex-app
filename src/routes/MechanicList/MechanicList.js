@@ -82,14 +82,14 @@ class MechanicList extends React.Component {
 			<div className="grid-container">
 				<Grid container spacing={16} >
 
-					<Grid item xs={8} direction="row">
+					<Grid item xs={12} direction="row">
 						{places && places.map((place) => {
 
 							return (
 
 								<Grid container spacing={24} direction="column">
 									<Grid item xs={12} key={`place-${place.id}`}>
-										<Link to={`/place/${place.id}`}>
+										<Link class="no-decoration" to={`/place/${place.id}`}>
 
 											<Paper className={`tile ${place.status}`}>
 												<Grid container direction="row" className="container-title">
@@ -131,14 +131,6 @@ class MechanicList extends React.Component {
 						})}
 					</Grid>
 
-					<Grid item xs={4}>
-						lorem ipsum
-						{/* {services && services.map((service) => {
-							return (
-								{ service.name }
-							)
-						})} */}
-					</Grid>
 				</Grid>
 
 			</div >
