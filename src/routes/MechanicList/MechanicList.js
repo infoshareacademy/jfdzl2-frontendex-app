@@ -89,7 +89,7 @@ class MechanicList extends React.Component {
 
 								<Grid container spacing={24} direction="column">
 									<Grid item xs={12} key={`place-${place.id}`}>
-										<Link class="no-decoration" to={`/place/${place.id}`}>
+										<Link className="no-decoration" to={`/place/${place.id}`}>
 
 											<Paper className={`tile ${place.status}`}>
 												<Grid container direction="row" className="container-title">

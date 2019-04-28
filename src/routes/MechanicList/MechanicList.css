@@ -45,5 +45,6 @@
 }
 
 a.no-decoration{
-    text-decoration: none !important
+    text-decoration: none !important;
+    color: black
 }
