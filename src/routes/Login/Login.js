@@ -75,7 +75,7 @@ class Login extends React.Component {
             <div className="login-form-header login-bottom-border">
               <p>LOGOWANIE</p>
             </div>
-              <form onSubmit={this.handleSubmit}>
+              <form style={{display: "flex", flexDirection:"column", alignItems: "center"}} onSubmit={this.handleSubmit}>
                 <div className="login-container-flex">
                   <FontAwesomeIcon icon="user" className="login-icon" />
                   <TextField
