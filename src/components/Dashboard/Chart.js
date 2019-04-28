@@ -1,13 +1,16 @@
 import React from 'react'
 import { ResponsivePie } from '@nivo/pie'
 import './Dashboard.css'
+import db from '../../database/firebase'
+
 class Chart extends React.Component {
 
     render() {
+        console.log(db.length)
         return (
             <div className="chart-container">
                 <div className="chart-title">
-                <h2>Mamy 0 zarejestrowanych warsztatów</h2>
+                <h2>Mamy 40 zarejestrowanych warsztatów</h2>
                 </div>
                     <ResponsivePie
                         data={[
