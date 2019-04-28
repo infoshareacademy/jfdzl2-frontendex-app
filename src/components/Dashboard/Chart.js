@@ -12,6 +12,7 @@ class Chart extends React.Component {
                 <div className="chart-title">
                 <h2>Mamy 40 zarejestrowanych warsztatów</h2>
                 </div>
+                <div className='chart'>
                     <ResponsivePie
                         data={[
                             {
@@ -78,6 +79,7 @@ class Chart extends React.Component {
                         motionDamping={15}
                         isInteractive={false}
                     />
+                    </div>
             </div>
 
         )

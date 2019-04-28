@@ -7,7 +7,7 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{position: 'relative', overflow: 'hidden'}}>
       <div className="background-container"></div>
         <div className="stats-main-container">
           <AppFeatures />
