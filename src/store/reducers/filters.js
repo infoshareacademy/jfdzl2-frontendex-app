@@ -3,10 +3,11 @@ import { SET_FILTERS } from "../constants";
 const initialState = {
     name: null,
     location: null,
-    specialization: null
+    specialization: null,
+    brand: null
 }
 
-const places = (state = initialState, action) => {
+const filters = (state = initialState, action) => {
 
     switch (action.type) {
         case SET_FILTERS:
@@ -16,4 +17,4 @@ const places = (state = initialState, action) => {
     }
 }
 
-export default places;
+export default filters;

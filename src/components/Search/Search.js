@@ -1,13 +1,12 @@
 import React from "react";
 import { connect } from 'react-redux';
 import TextField from "@material-ui/core/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { withStyles } from "@material-ui/core/styles";
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import { filter } from 'lodash';
 import { setPlaces } from '../../store/actions/places';
+import { setFilters } from '../../store/actions/filters';
 
 
 import "./Search.css";
@@ -22,19 +21,34 @@ const styles = theme => ({
   },
   inputFocused: {
     color: 'white !important'
+  },
+  iconButton: {
+    backgroundColor: 'white',
+    borderRadius: '5px',
+    fontSize: '80%',
+    padding: '5px 25px'
+
   }
 });
 
 class Search extends React.Component {
 
+  state = {
+    name: null,
+    location: null,
+    specialization: null,
+    brand: null
+  }
+
   handleSubmit = (event) => {
     event.preventDefault();
-
+    this.props.setFilters(this.state);
     console.log('submit');
 
-   
+  }
 
-
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value })
   }
 
 
@@ -47,7 +61,8 @@ class Search extends React.Component {
           <h2>Szukaj mechanika</h2>
         </div>
         <div className="search-fields-container">
-          <TextField className={classes.searchTextField}
+          <TextField fullWidth className={classes.searchTextField}
+          onChange={this.handleChange}
             id="input-with-icon-textfield"
             name='name'
             label="Nazwa warsztatu"
@@ -56,14 +71,10 @@ class Search extends React.Component {
               classes: {
                 focused: classes.inputFocused
               },
-              startAdornment: (
-                <InputAdornment position="start">
-                  <FontAwesomeIcon icon="search" className='search-icon' />
-                </InputAdornment>
-              )
             }}
           />
-          <TextField className={classes.searchTextField}
+          <TextField fullWidth className={classes.searchTextField}
+            onChange={this.handleChange}
             id="input-with-icon-textfield"
             label="Lokalizacja"
             name='location'
@@ -72,57 +83,61 @@ class Search extends React.Component {
               classes: {
                 focused: classes.inputFocused
               },
-              startAdornment: (
-                <InputAdornment position="start">
-                  <FontAwesomeIcon icon="search" className='search-icon' />
-                </InputAdornment>
-              )
             }}
           />
-           <TextField
-          id="brands"
-          select
-          SelectProps={{
-            native: true,
-            MenuProps: {
-              className: classes.menu,
-            },
-          }}
-          margin="normal"
-        >
-        {this.props.brands.map( brand => 
-          <option key={brand.id} value={brand.id}>
-          {brand.name}
-        </option>
-        )}
-        </TextField>
-           <TextField
-          id="services"
-          select
-          SelectProps={{
-            native: true,
-            MenuProps: {
-              className: classes.menu,
-            },
-          }}
-          margin="normal"
-        >
-        {this.props.services.map( service => 
-          <option key={service.id} value={service.id}>
-          {service.name}
-        </option>
-        )}
-        </TextField>
-        </div>
-        <IconButton
-          type='submit'
-        >
-          <SearchIcon />
-
-          Search
+          <TextField fullWidth
+            className={classes.searchTextField}
+            onChange={this.handleChange}
+            name='brand'
+            id="brands"
+            select
+            SelectProps={{
+              native: true,
+              MenuProps: {
+                className: classes.menu,
+              },
+            }}
+            margin="normal"
+          >
+            {this.props.brands.map(brand =>
+              <option key={brand.id} value={brand.id}>
+                {brand.name}
+              </option>
+            )}
+          </TextField>
+          <TextField fullWidth
+            className={classes.searchTextField}
+            onChange={this.handleChange}
+            name='specialization'
+            id="services"
+            select
+            SelectProps={{
+              native: true,
+              MenuProps: {
+                className: classes.menu,
+              },
+            }}
+            margin="normal"
+          >
+            {this.props.services.map(service =>
+              <option key={service.id} value={service.id}>
+                {service.name}
+              </option>
+            )}
+          </TextField>
+          <IconButton
+            variant='contained'
+            size='medium'
+            type='submit'
+            className={classes.iconButton}
+            onSubmit={this.handleSubmit}
+          >
+            <SearchIcon />
+            Szukaj
         </IconButton>
+        </div>
       </form>
-      
+
     );
   }
 }
@@ -136,7 +151,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-  setPlaces
+  setPlaces,
+  setFilters
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Search));
